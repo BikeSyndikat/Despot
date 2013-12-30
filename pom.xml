@@ -1,11 +1,23 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.ifbma</groupId>
+        <artifactId>ee6-parent-pom</artifactId>
+        <version>1.0.3</version>
+    </parent>
 
     <groupId>org.ifbma.legacy</groupId>
     <artifactId>LegacyDespot</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <packaging>war</packaging>
+
+    <organization>
+        <name>IFMBA</name>
+        <url>http://ifbma.org/</url>
+    </organization>
 
     <name>LegacyDespot</name>
 
@@ -18,8 +30,6 @@
         <dependency>
             <groupId>javax</groupId>
             <artifactId>javaee-web-api</artifactId>
-            <version>6.0</version>
-            <scope>provided</scope>
         </dependency>
     </dependencies>
 
@@ -40,9 +50,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
-                <version>2.1.1</version>
                 <configuration>
-                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <archiveClasses>true</archiveClasses>
                 </configuration>
             </plugin>
             <plugin>
