@@ -13,110 +13,91 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author norbert
  */
 @Entity
-@Table(uniqueConstraints = {
+@Table(name = "\"Rechnungskunden\"", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"Kuerzel"})})
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Rechnungskunden.findAll", query = "SELECT r FROM Rechnungskunden r"),
     @NamedQuery(name = "Rechnungskunden.findById", query = "SELECT r FROM Rechnungskunden r WHERE r.id = :id"),
     @NamedQuery(name = "Rechnungskunden.findByKuerzel", query = "SELECT r FROM Rechnungskunden r WHERE r.kuerzel = :kuerzel"),
-    @NamedQuery(name = "Rechnungskunden.findByFirmierung1", query = "SELECT r FROM Rechnungskunden r WHERE r.firmierung1 = :firmierung1"),
-    @NamedQuery(name = "Rechnungskunden.findByFirmierung2", query = "SELECT r FROM Rechnungskunden r WHERE r.firmierung2 = :firmierung2"),
-    @NamedQuery(name = "Rechnungskunden.findByStra\u00dfe", query = "SELECT r FROM Rechnungskunden r WHERE r.stra\u00dfe = :stra\u00dfe"),
-    @NamedQuery(name = "Rechnungskunden.findByPlz", query = "SELECT r FROM Rechnungskunden r WHERE r.plz = :plz"),
-    @NamedQuery(name = "Rechnungskunden.findByOrt", query = "SELECT r FROM Rechnungskunden r WHERE r.ort = :ort"),
     @NamedQuery(name = "Rechnungskunden.findByKdNr", query = "SELECT r FROM Rechnungskunden r WHERE r.kdNr = :kdNr"),
-    @NamedQuery(name = "Rechnungskunden.findByZonenK\u00fcrzel", query = "SELECT r FROM Rechnungskunden r WHERE r.zonenK\u00fcrzel = :zonenK\u00fcrzel"),
-    @NamedQuery(name = "Rechnungskunden.findByTelefon", query = "SELECT r FROM Rechnungskunden r WHERE r.telefon = :telefon"),
-    @NamedQuery(name = "Rechnungskunden.findByDurchwahl", query = "SELECT r FROM Rechnungskunden r WHERE r.durchwahl = :durchwahl"),
-    @NamedQuery(name = "Rechnungskunden.findByFax", query = "SELECT r FROM Rechnungskunden r WHERE r.fax = :fax"),
-    @NamedQuery(name = "Rechnungskunden.findByAnsprechpartner", query = "SELECT r FROM Rechnungskunden r WHERE r.ansprechpartner = :ansprechpartner"),
-    @NamedQuery(name = "Rechnungskunden.findByEMail", query = "SELECT r FROM Rechnungskunden r WHERE r.eMail = :eMail"),
-    @NamedQuery(name = "Rechnungskunden.findByHomepage", query = "SELECT r FROM Rechnungskunden r WHERE r.homepage = :homepage"),
-    @NamedQuery(name = "Rechnungskunden.findByBranche", query = "SELECT r FROM Rechnungskunden r WHERE r.branche = :branche"),
-    @NamedQuery(name = "Rechnungskunden.findByUstId", query = "SELECT r FROM Rechnungskunden r WHERE r.ustId = :ustId"),
-    @NamedQuery(name = "Rechnungskunden.findBySonstiges", query = "SELECT r FROM Rechnungskunden r WHERE r.sonstiges = :sonstiges"),
-    @NamedQuery(name = "Rechnungskunden.findByFragebogen", query = "SELECT r FROM Rechnungskunden r WHERE r.fragebogen = :fragebogen"),
-    @NamedQuery(name = "Rechnungskunden.findByBemerkung", query = "SELECT r FROM Rechnungskunden r WHERE r.bemerkung = :bemerkung"),
-    @NamedQuery(name = "Rechnungskunden.findByAnrede", query = "SELECT r FROM Rechnungskunden r WHERE r.anrede = :anrede"),
-    @NamedQuery(name = "Rechnungskunden.findBySkonto", query = "SELECT r FROM Rechnungskunden r WHERE r.skonto = :skonto"),
     @NamedQuery(name = "Rechnungskunden.findByKundeKuerzel", query = "SELECT r FROM Rechnungskunden r WHERE r.kundeKuerzel = :kundeKuerzel")})
 public class Rechnungskunden implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(name = "\"ID\"", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 254)
-    @Column(nullable = false, length = 254)
+    @Column(name = "\"Kuerzel\"", nullable = false, length = 254)
     private String kuerzel;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Firmierung1\"", length = 254)
     private String firmierung1;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Firmierung2\"", length = 254)
     private String firmierung2;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Straße\"", length = 254)
     private String straße;
     @Size(max = 8)
-    @Column(length = 8)
+    @Column(name = "\"PLZ\"", length = 8)
     private String plz;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Ort\"", length = 254)
     private String ort;
     @Size(max = 254)
-    @Column(name = "Kd-Nr", length = 254)
+    @Column(name = "\"Kd-Nr\"", length = 254)
     private String kdNr;
     @Size(max = 254)
-    @Column(name = "Zonen K\u00fcrzel", length = 254)
+    @Column(name = "\"Zonenkuerzel\"", length = 254)
     private String zonenKürzel;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Telefon\"", length = 254)
     private String telefon;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Durchwahl\"", length = 254)
     private String durchwahl;
     // @Pattern(regexp="^\\(?(\\d{3})\\)?[- ]?(\\d{3})[- ]?(\\d{4})$", message="Invalid phone/fax format, should be as xxx-xxx-xxxx")//if the field contains phone or fax number consider using this annotation to enforce field validation
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Fax\"", length = 254)
     private String fax;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Ansprechpartner\"", length = 254)
     private String ansprechpartner;
     // @Pattern(regexp="[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?", message="Invalid email")//if the field contains email address consider using this annotation to enforce field validation
     @Size(max = 254)
-    @Column(name = "e-mail", length = 254)
+    @Column(name = "\"e-mail\"", length = 254)
     private String eMail;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Homepage\"", length = 254)
     private String homepage;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Branche\"", length = 254)
     private String branche;
     @Size(max = 254)
-    @Column(name = "Ust-Id", length = 254)
+    @Column(name = "\"Rechtsform HRA/HRB/Ust-Id\"", length = 254)
     private String ustId;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Sonstiges\"", length = 254)
     private String sonstiges;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Fragebogen\"", length = 254)
     private String fragebogen;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Bemerkung\"", length = 254)
     private String bemerkung;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Anrede\"", length = 254)
     private String anrede;
     @Size(max = 254)
-    @Column(length = 254)
+    @Column(name = "\"Skonto\"", length = 254)
     private String skonto;
     @Size(max = 254)
-    @Column(name = "Kunde-Kuerzel", length = 254)
+    @Column(name = "\"Kunde-Kuerzel\"", length = 254)
     private String kundeKuerzel;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "kuerzel")
     private List<Auftragsannahme> auftragsannahmeList;
