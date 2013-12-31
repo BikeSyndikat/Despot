@@ -12,7 +12,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "\"Auftragsannahme\"")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Auftragsannahme.findAll", query = "SELECT a FROM Auftragsannahme a"),
+    @NamedQuery(name = "Auftragsannahme.findAll", query = "SELECT a FROM Auftragsannahme a ORDER BY a.id DESC"),
     @NamedQuery(name = "Auftragsannahme.findById", query = "SELECT a FROM Auftragsannahme a WHERE a.id = :id"),
     @NamedQuery(name = "Auftragsannahme.findByDat", query = "SELECT a FROM Auftragsannahme a WHERE a.dat = :dat"),
     @NamedQuery(name = "Auftragsannahme.findByUhr", query = "SELECT a FROM Auftragsannahme a WHERE a.uhr = :uhr"),

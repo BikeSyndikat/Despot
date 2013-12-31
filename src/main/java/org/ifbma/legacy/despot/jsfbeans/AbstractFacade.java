@@ -8,6 +8,8 @@ package org.ifbma.legacy.despot.jsfbeans;
 
 import java.util.List;
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaQuery;
 
 /**
  *
@@ -48,6 +50,16 @@ public abstract class AbstractFacade<T> {
         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         javax.persistence.Query q = getEntityManager().createQuery(cq);
+        q.setMaxResults(range[1] - range[0] + 1);
+        q.setFirstResult(range[0]);
+        return q.getResultList();
+    }
+
+    public List<T> findNewestRange(int[] range) {
+        CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        TypedQuery<T> q = getEntityManager().createNamedQuery(
+                entityClass.getSimpleName() + ".findAll", entityClass);
         q.setMaxResults(range[1] - range[0] + 1);
         q.setFirstResult(range[0]);
         return q.getResultList();

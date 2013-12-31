@@ -54,7 +54,9 @@ public class AuftragsannahmeController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findNewestRange(
+                            new int[]{getPageFirstItem(),
+                                getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -148,7 +150,9 @@ public class AuftragsannahmeController implements Serializable {
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findNewestRange(
+                    new int[]{selectedItemIndex, selectedItemIndex + 1})
+                    .get(0);
         }
     }
 
