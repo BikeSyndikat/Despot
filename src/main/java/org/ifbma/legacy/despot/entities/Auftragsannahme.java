@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
+@Table(name = "\"Auftragsannahme\"")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Auftragsannahme.findAll", query = "SELECT a FROM Auftragsannahme a"),
@@ -32,47 +33,51 @@ public class Auftragsannahme implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(nullable = false)
+    @Column(name = "\"Id\"", nullable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
-    @Column(nullable = false)
+    @Column(name = "\"Dat\"", nullable = false)
     @Temporal(TemporalType.TIMESTAMP)
     private Date dat;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 20)
-    @Column(nullable = false, length = 20)
+    @Column(name = "\"Uhr\"", nullable = false, length = 20)
     private String uhr;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"Von\"", length = 50)
     private String von;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"Ueber\"", length = 50)
     private String ueber;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"Nach\"", length = 50)
     private String nach;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"Job\"", length = 50)
     private String job;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"FahrscheckNr\"", length = 50)
     private String fahrscheckNr;
+    @Column(name = "\"Preis\"")
     private BigInteger preis;
+    @Column(name = "\"FahrerNr\"")
     private Integer fahrerNr;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"Typ\"", length = 50)
     private String typ;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"PreisCheck\"", length = 50)
     private String preisCheck;
     @Size(max = 50)
-    @Column(length = 50)
+    @Column(name = "\"FahrscheckCheck\"", length = 50)
     private String fahrscheckCheck;
+    @Column(name = "\"Sonderkonditionen\"")
     private Integer sonderkonditionen;
+    @Column(name = "\"Summe\"")
     private BigInteger summe;
-    @JoinColumn(name = "Kuerzel", referencedColumnName = "ID", nullable = false)
+    @JoinColumn(name = "\"Kuerzel\"", referencedColumnName = "\"ID\"", nullable = false)
     @ManyToOne(optional = false)
     private Rechnungskunden kuerzel;
 
