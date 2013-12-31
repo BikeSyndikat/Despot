@@ -22,12 +22,6 @@
                     <h:dataTable value="#{rechnungskundenController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRechnungskundenTitle_kuerzel}"/>
                             </f:facet>
                             <h:outputText value="#{item.kuerzel}"/>
@@ -40,27 +34,9 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_firmierung2}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.firmierung2}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRechnungskundenTitle_straße}"/>
                             </f:facet>
                             <h:outputText value="#{item.straße}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_plz}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.plz}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_ort}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ort}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -70,108 +46,12 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_zonenKürzel}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.zonenKürzel}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_telefon}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.telefon}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_durchwahl}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.durchwahl}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_fax}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fax}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_ansprechpartner}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ansprechpartner}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_EMail}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.EMail}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_homepage}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.homepage}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_branche}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.branche}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_ustId}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ustId}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_sonstiges}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.sonstiges}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_fragebogen}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fragebogen}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_bemerkung}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.bemerkung}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_anrede}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.anrede}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_skonto}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.skonto}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListRechnungskundenTitle_kundeKuerzel}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.kundeKuerzel}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
                             <h:commandLink action="#{rechnungskundenController.prepareView}" value="#{bundle.ListRechnungskundenViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{rechnungskundenController.prepareEdit}" value="#{bundle.ListRechnungskundenEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{rechnungskundenController.destroy}" value="#{bundle.ListRechnungskundenDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
-                <br />
-                <h:commandLink action="#{rechnungskundenController.prepareCreate}" value="#{bundle.ListRechnungskundenCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListRechnungskundenIndexLink}"/>

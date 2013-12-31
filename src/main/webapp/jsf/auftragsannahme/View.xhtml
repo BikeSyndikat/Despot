@@ -19,7 +19,7 @@
                     <h:outputText value="#{auftragsannahmeController.selected.id}" title="#{bundle.ViewAuftragsannahmeTitle_id}"/>
                     <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_dat}"/>
                     <h:outputText value="#{auftragsannahmeController.selected.dat}" title="#{bundle.ViewAuftragsannahmeTitle_dat}">
-                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                        <f:convertDateTime pattern="dd.MM.yyyy HH:mm:ss" />
                     </h:outputText>
                     <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_uhr}"/>
                     <h:outputText value="#{auftragsannahmeController.selected.uhr}" title="#{bundle.ViewAuftragsannahmeTitle_uhr}"/>
@@ -50,13 +50,6 @@
                     <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_kuerzel}"/>
                     <h:outputText value="#{auftragsannahmeController.selected.kuerzel}" title="#{bundle.ViewAuftragsannahmeTitle_kuerzel}"/>
                 </h:panelGrid>
-                <br />
-                <h:commandLink action="#{auftragsannahmeController.destroyAndView}" value="#{bundle.ViewAuftragsannahmeDestroyLink}"/>
-                <br />
-                <br />
-                <h:link outcome="Edit" value="#{bundle.ViewAuftragsannahmeEditLink}"/>
-                <br />
-                <h:commandLink action="#{auftragsannahmeController.prepareCreate}" value="#{bundle.ViewAuftragsannahmeCreateLink}" />
                 <br />
                 <h:commandLink action="#{auftragsannahmeController.prepareList}" value="#{bundle.ViewAuftragsannahmeShowAllLink}"/>
                 <br />
