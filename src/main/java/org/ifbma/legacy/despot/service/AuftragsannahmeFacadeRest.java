@@ -1,11 +1,13 @@
 package org.ifbma.legacy.despot.service;
 
 import java.util.List;
+import javax.ejb.Stateless;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import org.ifbma.legacy.despot.entities.Auftragsannahme;
 
+@Stateless
 @Path("auftrag")
 public class AuftragsannahmeFacadeRest extends AbstractFacade<Auftragsannahme> {
 
