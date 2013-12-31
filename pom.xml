@@ -9,7 +9,7 @@
 
     <groupId>org.ifbma.legacy</groupId>
     <artifactId>LegacyDespot</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <organization>
@@ -27,7 +27,7 @@
     <scm>
         <connection>scm:git:ssh://gitrepos@ifbma.org/~/LegacyDespot</connection>
         <developerConnection>scm:git:ssh://gitrepos@ifbma.org/~/LegacyDespot</developerConnection>
-        <tag>v1.0.0</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <dependencies>
