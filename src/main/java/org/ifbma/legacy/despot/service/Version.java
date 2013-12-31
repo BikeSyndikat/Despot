@@ -1,10 +1,12 @@
 package org.ifbma.legacy.despot.service;
 
 import java.util.logging.Logger;
+import javax.ejb.Singleton;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 @Path("System")
+@Singleton
 public class Version {
 
     private static final Logger LOG = Logger.getLogger(Version.class.getCanonicalName());
