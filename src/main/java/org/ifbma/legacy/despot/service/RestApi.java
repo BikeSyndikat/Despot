@@ -11,7 +11,7 @@ public class RestApi extends Application {
     private static final Logger LOG = Logger.getLogger(RestApi.class.getCanonicalName());
 
     public RestApi() {
-        LOG.severe("started");
+        LOG.info("rest api started");
     }
 
     @Override
@@ -22,7 +22,6 @@ public class RestApi extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
-        resources.add(org.ifbma.legacy.despot.service.AbstractFacade.class);
         resources.add(org.ifbma.legacy.despot.service.AuftragsannahmeFacadeRest.class);
         resources.add(org.ifbma.legacy.despot.service.Version.class);
     }
