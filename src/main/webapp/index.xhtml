@@ -3,17 +3,19 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Legacy Dispo</title>
         <h:outputStylesheet name="css/jsfcrud.css"/>
     </h:head>
     <h:body>
-        Hello from Facelets
+        Legacy Dispo
         <br />
-        <h:link outcome="/jsf/auftragsannahme/List" value="Show All Auftragsannahme Items"/>
+        <h:link outcome="/jsf/auftragsannahme/List" value="${bundle.ViewAuftragsannahmeShowAllLink}"/>
         <br />
-        <h:link outcome="/jsf/rechnungskunden/List" value="Show All Rechnungskunden Items"/>
+        <h:link outcome="/jsf/rechnungskunden/List" value="${bundle.ViewRechnungskundenShowAllLink}"/>
+        <br />
+        <br />
+        <h:outputText value="#{version.version}"/>
     </h:body>
-
 
 </html>
 
