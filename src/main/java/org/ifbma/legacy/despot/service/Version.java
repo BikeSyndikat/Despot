@@ -9,16 +9,19 @@ public class Version {
 
     private static final Logger LOG = Logger.getLogger(Version.class.getCanonicalName());
 
-    private final String version;
+    private String version;
 
     private final String info;
 
     public Version() {
-        LOG.severe("started");
+        LOG.severe("started..");
         final Package pkg = getClass().getPackage();
-        this.version = pkg.getImplementationVersion();
-        LOG.severe(this.version);
-        StringBuilder sb = new StringBuilder(this.version);
+        version = pkg.getImplementationVersion();
+        if (version == null) {
+            version = "-";
+        }
+        LOG.severe(version);
+        StringBuilder sb = new StringBuilder(version);
         sb.append("\nImplementationTitle: ").append(pkg.getImplementationTitle());
         sb.append("\nImplementationVendor: ").append(pkg.getImplementationVendor());
         sb.append("\nImplementationVersion: ").append(pkg.getImplementationVersion());
@@ -26,7 +29,7 @@ public class Version {
         sb.append("\nSpecificationVendor: ").append(pkg.getSpecificationVendor());
         sb.append("\nSpecificationVersion: ").append(pkg.getSpecificationVersion());
         sb.append("\nName: ").append(pkg.getName());
-        this.info = sb.toString();
+        info = sb.toString();
     }
 
     /**
@@ -40,12 +43,12 @@ public class Version {
     @GET
     @Path("Version")
     public String getVersion() {
-        return this.version;
+        return version;
     }
 
     @GET
     @Path("Info")
     public String getInfo() {
-        return this.info;
+        return info;
     }
 }
