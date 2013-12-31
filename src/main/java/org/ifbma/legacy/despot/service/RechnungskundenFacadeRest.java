@@ -7,9 +7,9 @@ import org.ifbma.legacy.despot.entities.Rechnungskunden;
 
 @Stateless
 @Path("rechnungskunde")
-public class RechnungskundenFacadeREST extends AbstractFacade<Rechnungskunden> {
+public class RechnungskundenFacadeRest extends AbstractFacade<Rechnungskunden> {
 
-    public RechnungskundenFacadeREST() {
+    public RechnungskundenFacadeRest() {
         super(Rechnungskunden.class);
     }
 

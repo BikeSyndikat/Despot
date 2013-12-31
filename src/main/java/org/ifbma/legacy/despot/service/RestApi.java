@@ -23,7 +23,7 @@ public class RestApi extends Application {
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
         resources.add(org.ifbma.legacy.despot.service.AuftragsannahmeFacadeRest.class);
-        resources.add(org.ifbma.legacy.despot.service.RechnungskundenFacadeREST.class);
+        resources.add(org.ifbma.legacy.despot.service.RechnungskundenFacadeRest.class);
         resources.add(org.ifbma.legacy.despot.service.Version.class);
     }
 
