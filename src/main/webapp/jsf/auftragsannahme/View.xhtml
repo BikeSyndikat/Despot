@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewAuftragsannahmeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_id}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.id}" title="#{bundle.ViewAuftragsannahmeTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_dat}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.dat}" title="#{bundle.ViewAuftragsannahmeTitle_dat}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_uhr}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.uhr}" title="#{bundle.ViewAuftragsannahmeTitle_uhr}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_von}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.von}" title="#{bundle.ViewAuftragsannahmeTitle_von}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_ueber}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.ueber}" title="#{bundle.ViewAuftragsannahmeTitle_ueber}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_nach}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.nach}" title="#{bundle.ViewAuftragsannahmeTitle_nach}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_job}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.job}" title="#{bundle.ViewAuftragsannahmeTitle_job}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_fahrscheckNr}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.fahrscheckNr}" title="#{bundle.ViewAuftragsannahmeTitle_fahrscheckNr}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_preis}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.preis}" title="#{bundle.ViewAuftragsannahmeTitle_preis}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_fahrerNr}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.fahrerNr}" title="#{bundle.ViewAuftragsannahmeTitle_fahrerNr}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_typ}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.typ}" title="#{bundle.ViewAuftragsannahmeTitle_typ}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_preisCheck}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.preisCheck}" title="#{bundle.ViewAuftragsannahmeTitle_preisCheck}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_fahrscheckCheck}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.fahrscheckCheck}" title="#{bundle.ViewAuftragsannahmeTitle_fahrscheckCheck}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_sonderkonditionen}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.sonderkonditionen}" title="#{bundle.ViewAuftragsannahmeTitle_sonderkonditionen}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_summe}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.summe}" title="#{bundle.ViewAuftragsannahmeTitle_summe}"/>
+                    <h:outputText value="#{bundle.ViewAuftragsannahmeLabel_kuerzel}"/>
+                    <h:outputText value="#{auftragsannahmeController.selected.kuerzel}" title="#{bundle.ViewAuftragsannahmeTitle_kuerzel}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{auftragsannahmeController.destroyAndView}" value="#{bundle.ViewAuftragsannahmeDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewAuftragsannahmeEditLink}"/>
+                <br />
+                <h:commandLink action="#{auftragsannahmeController.prepareCreate}" value="#{bundle.ViewAuftragsannahmeCreateLink}" />
+                <br />
+                <h:commandLink action="#{auftragsannahmeController.prepareList}" value="#{bundle.ViewAuftragsannahmeShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewAuftragsannahmeIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

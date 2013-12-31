@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateRechnungskundenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{rechnungskundenController.selected.id}" title="#{bundle.CreateRechnungskundenTitle_id}" required="true" requiredMessage="#{bundle.CreateRechnungskundenRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_kuerzel}" for="kuerzel" />
+                    <h:inputText id="kuerzel" value="#{rechnungskundenController.selected.kuerzel}" title="#{bundle.CreateRechnungskundenTitle_kuerzel}" required="true" requiredMessage="#{bundle.CreateRechnungskundenRequiredMessage_kuerzel}"/>
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_firmierung1}" for="firmierung1" />
+                    <h:inputText id="firmierung1" value="#{rechnungskundenController.selected.firmierung1}" title="#{bundle.CreateRechnungskundenTitle_firmierung1}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_firmierung2}" for="firmierung2" />
+                    <h:inputText id="firmierung2" value="#{rechnungskundenController.selected.firmierung2}" title="#{bundle.CreateRechnungskundenTitle_firmierung2}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_straße}" for="straße" />
+                    <h:inputText id="straße" value="#{rechnungskundenController.selected.straße}" title="#{bundle.CreateRechnungskundenTitle_straße}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_plz}" for="plz" />
+                    <h:inputText id="plz" value="#{rechnungskundenController.selected.plz}" title="#{bundle.CreateRechnungskundenTitle_plz}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_ort}" for="ort" />
+                    <h:inputText id="ort" value="#{rechnungskundenController.selected.ort}" title="#{bundle.CreateRechnungskundenTitle_ort}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_kdNr}" for="kdNr" />
+                    <h:inputText id="kdNr" value="#{rechnungskundenController.selected.kdNr}" title="#{bundle.CreateRechnungskundenTitle_kdNr}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_zonenKürzel}" for="zonenKürzel" />
+                    <h:inputText id="zonenKürzel" value="#{rechnungskundenController.selected.zonenKürzel}" title="#{bundle.CreateRechnungskundenTitle_zonenKürzel}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_telefon}" for="telefon" />
+                    <h:inputText id="telefon" value="#{rechnungskundenController.selected.telefon}" title="#{bundle.CreateRechnungskundenTitle_telefon}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_durchwahl}" for="durchwahl" />
+                    <h:inputText id="durchwahl" value="#{rechnungskundenController.selected.durchwahl}" title="#{bundle.CreateRechnungskundenTitle_durchwahl}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_fax}" for="fax" />
+                    <h:inputText id="fax" value="#{rechnungskundenController.selected.fax}" title="#{bundle.CreateRechnungskundenTitle_fax}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_ansprechpartner}" for="ansprechpartner" />
+                    <h:inputText id="ansprechpartner" value="#{rechnungskundenController.selected.ansprechpartner}" title="#{bundle.CreateRechnungskundenTitle_ansprechpartner}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_EMail}" for="EMail" />
+                    <h:inputText id="EMail" value="#{rechnungskundenController.selected.EMail}" title="#{bundle.CreateRechnungskundenTitle_EMail}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_homepage}" for="homepage" />
+                    <h:inputText id="homepage" value="#{rechnungskundenController.selected.homepage}" title="#{bundle.CreateRechnungskundenTitle_homepage}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_branche}" for="branche" />
+                    <h:inputText id="branche" value="#{rechnungskundenController.selected.branche}" title="#{bundle.CreateRechnungskundenTitle_branche}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_ustId}" for="ustId" />
+                    <h:inputText id="ustId" value="#{rechnungskundenController.selected.ustId}" title="#{bundle.CreateRechnungskundenTitle_ustId}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_sonstiges}" for="sonstiges" />
+                    <h:inputText id="sonstiges" value="#{rechnungskundenController.selected.sonstiges}" title="#{bundle.CreateRechnungskundenTitle_sonstiges}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_fragebogen}" for="fragebogen" />
+                    <h:inputText id="fragebogen" value="#{rechnungskundenController.selected.fragebogen}" title="#{bundle.CreateRechnungskundenTitle_fragebogen}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_bemerkung}" for="bemerkung" />
+                    <h:inputText id="bemerkung" value="#{rechnungskundenController.selected.bemerkung}" title="#{bundle.CreateRechnungskundenTitle_bemerkung}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_anrede}" for="anrede" />
+                    <h:inputText id="anrede" value="#{rechnungskundenController.selected.anrede}" title="#{bundle.CreateRechnungskundenTitle_anrede}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_skonto}" for="skonto" />
+                    <h:inputText id="skonto" value="#{rechnungskundenController.selected.skonto}" title="#{bundle.CreateRechnungskundenTitle_skonto}" />
+                    <h:outputLabel value="#{bundle.CreateRechnungskundenLabel_kundeKuerzel}" for="kundeKuerzel" />
+                    <h:inputText id="kundeKuerzel" value="#{rechnungskundenController.selected.kundeKuerzel}" title="#{bundle.CreateRechnungskundenTitle_kundeKuerzel}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rechnungskundenController.create}" value="#{bundle.CreateRechnungskundenSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{rechnungskundenController.prepareList}" value="#{bundle.CreateRechnungskundenShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateRechnungskundenIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

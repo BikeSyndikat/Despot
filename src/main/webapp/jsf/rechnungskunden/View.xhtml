@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRechnungskundenTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_id}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.id}" title="#{bundle.ViewRechnungskundenTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_kuerzel}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.kuerzel}" title="#{bundle.ViewRechnungskundenTitle_kuerzel}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_firmierung1}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.firmierung1}" title="#{bundle.ViewRechnungskundenTitle_firmierung1}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_firmierung2}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.firmierung2}" title="#{bundle.ViewRechnungskundenTitle_firmierung2}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_straße}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.straße}" title="#{bundle.ViewRechnungskundenTitle_straße}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_plz}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.plz}" title="#{bundle.ViewRechnungskundenTitle_plz}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_ort}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.ort}" title="#{bundle.ViewRechnungskundenTitle_ort}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_kdNr}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.kdNr}" title="#{bundle.ViewRechnungskundenTitle_kdNr}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_zonenKürzel}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.zonenKürzel}" title="#{bundle.ViewRechnungskundenTitle_zonenKürzel}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_telefon}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.telefon}" title="#{bundle.ViewRechnungskundenTitle_telefon}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_durchwahl}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.durchwahl}" title="#{bundle.ViewRechnungskundenTitle_durchwahl}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_fax}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.fax}" title="#{bundle.ViewRechnungskundenTitle_fax}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_ansprechpartner}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.ansprechpartner}" title="#{bundle.ViewRechnungskundenTitle_ansprechpartner}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_EMail}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.EMail}" title="#{bundle.ViewRechnungskundenTitle_EMail}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_homepage}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.homepage}" title="#{bundle.ViewRechnungskundenTitle_homepage}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_branche}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.branche}" title="#{bundle.ViewRechnungskundenTitle_branche}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_ustId}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.ustId}" title="#{bundle.ViewRechnungskundenTitle_ustId}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_sonstiges}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.sonstiges}" title="#{bundle.ViewRechnungskundenTitle_sonstiges}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_fragebogen}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.fragebogen}" title="#{bundle.ViewRechnungskundenTitle_fragebogen}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_bemerkung}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.bemerkung}" title="#{bundle.ViewRechnungskundenTitle_bemerkung}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_anrede}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.anrede}" title="#{bundle.ViewRechnungskundenTitle_anrede}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_skonto}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.skonto}" title="#{bundle.ViewRechnungskundenTitle_skonto}"/>
+                    <h:outputText value="#{bundle.ViewRechnungskundenLabel_kundeKuerzel}"/>
+                    <h:outputText value="#{rechnungskundenController.selected.kundeKuerzel}" title="#{bundle.ViewRechnungskundenTitle_kundeKuerzel}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{rechnungskundenController.destroyAndView}" value="#{bundle.ViewRechnungskundenDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRechnungskundenEditLink}"/>
+                <br />
+                <h:commandLink action="#{rechnungskundenController.prepareCreate}" value="#{bundle.ViewRechnungskundenCreateLink}" />
+                <br />
+                <h:commandLink action="#{rechnungskundenController.prepareList}" value="#{bundle.ViewRechnungskundenShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRechnungskundenIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

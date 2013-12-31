@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListAuftragsannahmeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListAuftragsannahmeEmpty}" rendered="#{auftragsannahmeController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{auftragsannahmeController.items.rowCount > 0}">
+                    <h:outputText value="#{auftragsannahmeController.pagination.pageFirstItem + 1}..#{auftragsannahmeController.pagination.pageLastItem + 1}/#{auftragsannahmeController.pagination.itemsCount}"/>&nbsp;
+                    <h:commandLink action="#{auftragsannahmeController.previous}" value="#{bundle.Previous} #{auftragsannahmeController.pagination.pageSize}" rendered="#{auftragsannahmeController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{auftragsannahmeController.next}" value="#{bundle.Next} #{auftragsannahmeController.pagination.pageSize}" rendered="#{auftragsannahmeController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{auftragsannahmeController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_id}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.id}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_dat}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.dat}">
+                                <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                            </h:outputText>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_uhr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uhr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_von}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.von}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_ueber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ueber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_nach}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nach}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_job}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.job}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_fahrscheckNr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fahrscheckNr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_preis}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.preis}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_fahrerNr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fahrerNr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_typ}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.typ}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_preisCheck}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.preisCheck}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_fahrscheckCheck}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.fahrscheckCheck}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_sonderkonditionen}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.sonderkonditionen}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_summe}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.summe}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListAuftragsannahmeTitle_kuerzel}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.kuerzel}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{auftragsannahmeController.prepareView}" value="#{bundle.ListAuftragsannahmeViewLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{auftragsannahmeController.prepareEdit}" value="#{bundle.ListAuftragsannahmeEditLink}"/>
+                            <h:outputText value=" "/>
+                            <h:commandLink action="#{auftragsannahmeController.destroy}" value="#{bundle.ListAuftragsannahmeDestroyLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <h:commandLink action="#{auftragsannahmeController.prepareCreate}" value="#{bundle.ListAuftragsannahmeCreateLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListAuftragsannahmeIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

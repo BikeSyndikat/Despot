@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.EditAuftragsannahmeTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{auftragsannahmeController.selected.id}" title="#{bundle.EditAuftragsannahmeTitle_id}" required="true" requiredMessage="#{bundle.EditAuftragsannahmeRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_dat}" for="dat" />
+                    <h:inputText id="dat" value="#{auftragsannahmeController.selected.dat}" title="#{bundle.EditAuftragsannahmeTitle_dat}" required="true" requiredMessage="#{bundle.EditAuftragsannahmeRequiredMessage_dat}">
+                        <f:convertDateTime pattern="MM/dd/yyyy HH:mm:ss" />
+                    </h:inputText>
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_uhr}" for="uhr" />
+                    <h:inputText id="uhr" value="#{auftragsannahmeController.selected.uhr}" title="#{bundle.EditAuftragsannahmeTitle_uhr}" required="true" requiredMessage="#{bundle.EditAuftragsannahmeRequiredMessage_uhr}"/>
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_von}" for="von" />
+                    <h:inputText id="von" value="#{auftragsannahmeController.selected.von}" title="#{bundle.EditAuftragsannahmeTitle_von}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_ueber}" for="ueber" />
+                    <h:inputText id="ueber" value="#{auftragsannahmeController.selected.ueber}" title="#{bundle.EditAuftragsannahmeTitle_ueber}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_nach}" for="nach" />
+                    <h:inputText id="nach" value="#{auftragsannahmeController.selected.nach}" title="#{bundle.EditAuftragsannahmeTitle_nach}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_job}" for="job" />
+                    <h:inputText id="job" value="#{auftragsannahmeController.selected.job}" title="#{bundle.EditAuftragsannahmeTitle_job}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_fahrscheckNr}" for="fahrscheckNr" />
+                    <h:inputText id="fahrscheckNr" value="#{auftragsannahmeController.selected.fahrscheckNr}" title="#{bundle.EditAuftragsannahmeTitle_fahrscheckNr}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_preis}" for="preis" />
+                    <h:inputText id="preis" value="#{auftragsannahmeController.selected.preis}" title="#{bundle.EditAuftragsannahmeTitle_preis}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_fahrerNr}" for="fahrerNr" />
+                    <h:inputText id="fahrerNr" value="#{auftragsannahmeController.selected.fahrerNr}" title="#{bundle.EditAuftragsannahmeTitle_fahrerNr}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_typ}" for="typ" />
+                    <h:inputText id="typ" value="#{auftragsannahmeController.selected.typ}" title="#{bundle.EditAuftragsannahmeTitle_typ}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_preisCheck}" for="preisCheck" />
+                    <h:inputText id="preisCheck" value="#{auftragsannahmeController.selected.preisCheck}" title="#{bundle.EditAuftragsannahmeTitle_preisCheck}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_fahrscheckCheck}" for="fahrscheckCheck" />
+                    <h:inputText id="fahrscheckCheck" value="#{auftragsannahmeController.selected.fahrscheckCheck}" title="#{bundle.EditAuftragsannahmeTitle_fahrscheckCheck}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_sonderkonditionen}" for="sonderkonditionen" />
+                    <h:inputText id="sonderkonditionen" value="#{auftragsannahmeController.selected.sonderkonditionen}" title="#{bundle.EditAuftragsannahmeTitle_sonderkonditionen}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_summe}" for="summe" />
+                    <h:inputText id="summe" value="#{auftragsannahmeController.selected.summe}" title="#{bundle.EditAuftragsannahmeTitle_summe}" />
+                    <h:outputLabel value="#{bundle.EditAuftragsannahmeLabel_kuerzel}" for="kuerzel" />
+                    <h:selectOneMenu id="kuerzel" value="#{auftragsannahmeController.selected.kuerzel}" title="#{bundle.EditAuftragsannahmeTitle_kuerzel}" required="true" requiredMessage="#{bundle.EditAuftragsannahmeRequiredMessage_kuerzel}">
+                        <f:selectItems value="#{rechnungskundenController.itemsAvailableSelectOne}"/>
+                    </h:selectOneMenu>
+                </h:panelGrid>
+                <h:commandLink action="#{auftragsannahmeController.update}" value="#{bundle.EditAuftragsannahmeSaveLink}"/>
+                <br />
+                <br />
+                <h:link outcome="View" value="#{bundle.EditAuftragsannahmeViewLink}"/>
+                <br />
+                <h:commandLink action="#{auftragsannahmeController.prepareList}" value="#{bundle.EditAuftragsannahmeShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.EditAuftragsannahmeIndexLink}" />
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
