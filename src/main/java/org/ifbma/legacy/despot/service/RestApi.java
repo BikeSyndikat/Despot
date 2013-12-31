@@ -7,6 +7,7 @@ import javax.ws.rs.core.Application;
 
 @ApplicationPath("/rest")
 public class RestApi extends Application {
+
     private static final Logger LOG = Logger.getLogger(RestApi.class.getCanonicalName());
 
     public RestApi() {
@@ -21,6 +22,7 @@ public class RestApi extends Application {
     }
 
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(org.ifbma.legacy.despot.service.AbstractFacade.class);
         resources.add(org.ifbma.legacy.despot.service.Version.class);
     }
 
