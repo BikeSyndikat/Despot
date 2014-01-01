@@ -22,12 +22,6 @@
                     <h:dataTable value="#{customerController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCustomerTitle_kuerzel}"/>
                             </f:facet>
                             <h:outputText value="#{item.kuerzel}"/>
@@ -40,27 +34,9 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerTitle_firmierung2}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.firmierung2}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCustomerTitle_strasse}"/>
                             </f:facet>
                             <h:outputText value="#{item.strasse}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerTitle_plz}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.plz}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerTitle_ort}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.ort}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
@@ -70,30 +46,12 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerTitle_telefon}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.telefon}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListCustomerTitle_durchwahl}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.durchwahl}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
                             <h:commandLink action="#{customerController.prepareView}" value="#{bundle.ListCustomerViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{customerController.prepareEdit}" value="#{bundle.ListCustomerEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{customerController.destroy}" value="#{bundle.ListCustomerDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
-                <br />
-                <h:commandLink action="#{customerController.prepareCreate}" value="#{bundle.ListCustomerCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListCustomerIndexLink}"/>

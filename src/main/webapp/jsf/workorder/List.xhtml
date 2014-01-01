@@ -60,18 +60,6 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListWorkorderTitle_job}"/>
                             </f:facet>
-                            <h:outputText value="#{item.job}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_fahrschecknr}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fahrschecknr}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_preis}"/>
-                            </f:facet>
                             <h:outputText value="#{item.preis}"/>
                         </h:column>
                         <h:column>
@@ -82,60 +70,12 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_typ}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.typ}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_preischeck}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.preischeck}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_fahrscheckcheck}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.fahrscheckcheck}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_sonderkonditionen}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.sonderkonditionen}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_summe}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.summe}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_kuerzel}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.kuerzel}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_firmierung1}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.firmierung1}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
                             <h:commandLink action="#{workorderController.prepareView}" value="#{bundle.ListWorkorderViewLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{workorderController.prepareEdit}" value="#{bundle.ListWorkorderEditLink}"/>
-                            <h:outputText value=" "/>
-                            <h:commandLink action="#{workorderController.destroy}" value="#{bundle.ListWorkorderDestroyLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
-                <br />
-                <h:commandLink action="#{workorderController.prepareCreate}" value="#{bundle.ListWorkorderCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListWorkorderIndexLink}"/>
