@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewWorkorderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_id}"/>
+                    <h:outputText value="#{workorderController.selected.id}" title="#{bundle.ViewWorkorderTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_dat}"/>
+                    <h:outputText value="#{workorderController.selected.dat}" title="#{bundle.ViewWorkorderTitle_dat}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_uhr}"/>
+                    <h:outputText value="#{workorderController.selected.uhr}" title="#{bundle.ViewWorkorderTitle_uhr}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_von}"/>
+                    <h:outputText value="#{workorderController.selected.von}" title="#{bundle.ViewWorkorderTitle_von}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_ueber}"/>
+                    <h:outputText value="#{workorderController.selected.ueber}" title="#{bundle.ViewWorkorderTitle_ueber}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_nach}"/>
+                    <h:outputText value="#{workorderController.selected.nach}" title="#{bundle.ViewWorkorderTitle_nach}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_job}"/>
+                    <h:outputText value="#{workorderController.selected.job}" title="#{bundle.ViewWorkorderTitle_job}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_fahrschecknr}"/>
+                    <h:outputText value="#{workorderController.selected.fahrschecknr}" title="#{bundle.ViewWorkorderTitle_fahrschecknr}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_preis}"/>
+                    <h:outputText value="#{workorderController.selected.preis}" title="#{bundle.ViewWorkorderTitle_preis}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_fahrernr}"/>
+                    <h:outputText value="#{workorderController.selected.fahrernr}" title="#{bundle.ViewWorkorderTitle_fahrernr}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_typ}"/>
+                    <h:outputText value="#{workorderController.selected.typ}" title="#{bundle.ViewWorkorderTitle_typ}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_preischeck}"/>
+                    <h:outputText value="#{workorderController.selected.preischeck}" title="#{bundle.ViewWorkorderTitle_preischeck}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_fahrscheckcheck}"/>
+                    <h:outputText value="#{workorderController.selected.fahrscheckcheck}" title="#{bundle.ViewWorkorderTitle_fahrscheckcheck}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_sonderkonditionen}"/>
+                    <h:outputText value="#{workorderController.selected.sonderkonditionen}" title="#{bundle.ViewWorkorderTitle_sonderkonditionen}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_summe}"/>
+                    <h:outputText value="#{workorderController.selected.summe}" title="#{bundle.ViewWorkorderTitle_summe}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_kuerzel}"/>
+                    <h:outputText value="#{workorderController.selected.kuerzel}" title="#{bundle.ViewWorkorderTitle_kuerzel}"/>
+                    <h:outputText value="#{bundle.ViewWorkorderLabel_firmierung1}"/>
+                    <h:outputText value="#{workorderController.selected.firmierung1}" title="#{bundle.ViewWorkorderTitle_firmierung1}"/>
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{workorderController.destroyAndView}" value="#{bundle.ViewWorkorderDestroyLink}"/>
+                <br />
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewWorkorderEditLink}"/>
+                <br />
+                <h:commandLink action="#{workorderController.prepareCreate}" value="#{bundle.ViewWorkorderCreateLink}" />
+                <br />
+                <h:commandLink action="#{workorderController.prepareList}" value="#{bundle.ViewWorkorderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewWorkorderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>

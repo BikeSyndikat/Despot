@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.CreateWorkorderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_id}" for="id" />
+                    <h:inputText id="id" value="#{workorderController.selected.id}" title="#{bundle.CreateWorkorderTitle_id}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_dat}" for="dat" />
+                    <h:inputText id="dat" value="#{workorderController.selected.dat}" title="#{bundle.CreateWorkorderTitle_dat}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_uhr}" for="uhr" />
+                    <h:inputText id="uhr" value="#{workorderController.selected.uhr}" title="#{bundle.CreateWorkorderTitle_uhr}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_von}" for="von" />
+                    <h:inputText id="von" value="#{workorderController.selected.von}" title="#{bundle.CreateWorkorderTitle_von}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_ueber}" for="ueber" />
+                    <h:inputText id="ueber" value="#{workorderController.selected.ueber}" title="#{bundle.CreateWorkorderTitle_ueber}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_nach}" for="nach" />
+                    <h:inputText id="nach" value="#{workorderController.selected.nach}" title="#{bundle.CreateWorkorderTitle_nach}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_job}" for="job" />
+                    <h:inputText id="job" value="#{workorderController.selected.job}" title="#{bundle.CreateWorkorderTitle_job}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_fahrschecknr}" for="fahrschecknr" />
+                    <h:inputText id="fahrschecknr" value="#{workorderController.selected.fahrschecknr}" title="#{bundle.CreateWorkorderTitle_fahrschecknr}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_preis}" for="preis" />
+                    <h:inputText id="preis" value="#{workorderController.selected.preis}" title="#{bundle.CreateWorkorderTitle_preis}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_fahrernr}" for="fahrernr" />
+                    <h:inputText id="fahrernr" value="#{workorderController.selected.fahrernr}" title="#{bundle.CreateWorkorderTitle_fahrernr}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_typ}" for="typ" />
+                    <h:inputText id="typ" value="#{workorderController.selected.typ}" title="#{bundle.CreateWorkorderTitle_typ}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_preischeck}" for="preischeck" />
+                    <h:inputText id="preischeck" value="#{workorderController.selected.preischeck}" title="#{bundle.CreateWorkorderTitle_preischeck}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_fahrscheckcheck}" for="fahrscheckcheck" />
+                    <h:inputText id="fahrscheckcheck" value="#{workorderController.selected.fahrscheckcheck}" title="#{bundle.CreateWorkorderTitle_fahrscheckcheck}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_sonderkonditionen}" for="sonderkonditionen" />
+                    <h:inputText id="sonderkonditionen" value="#{workorderController.selected.sonderkonditionen}" title="#{bundle.CreateWorkorderTitle_sonderkonditionen}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_summe}" for="summe" />
+                    <h:inputText id="summe" value="#{workorderController.selected.summe}" title="#{bundle.CreateWorkorderTitle_summe}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_kuerzel}" for="kuerzel" />
+                    <h:inputText id="kuerzel" value="#{workorderController.selected.kuerzel}" title="#{bundle.CreateWorkorderTitle_kuerzel}" />
+                    <h:outputLabel value="#{bundle.CreateWorkorderLabel_firmierung1}" for="firmierung1" />
+                    <h:inputText id="firmierung1" value="#{workorderController.selected.firmierung1}" title="#{bundle.CreateWorkorderTitle_firmierung1}" />
+                </h:panelGrid>
+                <br />
+                <h:commandLink action="#{workorderController.create}" value="#{bundle.CreateWorkorderSaveLink}" />
+                <br />
+                <br />
+                <h:commandLink action="#{workorderController.prepareList}" value="#{bundle.CreateWorkorderShowAllLink}" immediate="true"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.CreateWorkorderIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
