@@ -30,7 +30,9 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListWorkorderTitle_dat}"/>
                             </f:facet>
-                            <h:outputText value="#{item.dat}"/>
+                            <h:outputText value="#{item.dat}">
+                                <f:convertNumber pattern="#00" />
+                            </h:outputText>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

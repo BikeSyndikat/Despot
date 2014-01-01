@@ -18,7 +18,9 @@
                     <h:outputText value="#{bundle.ViewWorkorderLabel_id}"/>
                     <h:outputText value="#{workorderController.selected.id}" title="#{bundle.ViewWorkorderTitle_id}"/>
                     <h:outputText value="#{bundle.ViewWorkorderLabel_dat}"/>
-                    <h:outputText value="#{workorderController.selected.dat}" title="#{bundle.ViewWorkorderTitle_dat}"/>
+                    <h:outputText value="#{workorderController.selected.dat}" title="#{bundle.ViewWorkorderTitle_dat}">
+                        <f:convertNumber pattern="#00" />
+                    </h:outputText>
                     <h:outputText value="#{bundle.ViewWorkorderLabel_uhr}"/>
                     <h:outputText value="#{workorderController.selected.uhr}" title="#{bundle.ViewWorkorderTitle_uhr}"/>
                     <h:outputText value="#{bundle.ViewWorkorderLabel_von}"/>
