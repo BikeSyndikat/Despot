@@ -66,7 +66,7 @@ public class Workorder implements Serializable {
     private String fahrscheckcheck;
     private Integer sonderkonditionen;
     private BigInteger summe;
-    private Integer kuerzel;
+    private String kuerzel;
     @Size(max = 254)
     @Column(length = 254)
     private String firmierung1;
@@ -194,11 +194,11 @@ public class Workorder implements Serializable {
         this.summe = summe;
     }
 
-    public Integer getKuerzel() {
+    public String getKuerzel() {
         return kuerzel;
     }
 
-    public void setKuerzel(Integer kuerzel) {
+    public void setKuerzel(String kuerzel) {
         this.kuerzel = kuerzel;
     }
 

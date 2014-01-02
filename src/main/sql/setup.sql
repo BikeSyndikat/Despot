@@ -17,7 +17,7 @@ CREATE OR REPLACE VIEW workorder AS
         "Auftragsannahme"."FahrscheckCheck" AS fahrscheckcheck,
         "Auftragsannahme"."Sonderkonditionen" AS sonderkonditionen,
         "Auftragsannahme"."Summe" AS summe,
-        "Auftragsannahme"."Kuerzel" AS kuerzel,
+        "Rechnungskunden"."Kuerzel" AS kuerzel,
 
         -- info from joined table(s):
         "Rechnungskunden"."Firmierung1" AS firmierung1
