@@ -22,20 +22,6 @@
                     <h:dataTable value="#{workorderController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_id}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.id}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_dat}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.dat}">
-                                <f:convertNumber pattern="#00" />
-                            </h:outputText>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
                                 <h:outputText value="#{bundle.ListWorkorderTitle_uhr}"/>
                             </f:facet>
                             <h:outputText value="#{item.uhr}"/>
@@ -57,12 +43,6 @@
                                 <h:outputText value="#{bundle.ListWorkorderTitle_nach}"/>
                             </f:facet>
                             <h:outputText value="#{item.nach}"/>
-                        </h:column>
-                        <h:column>
-                            <f:facet name="header">
-                                <h:outputText value="#{bundle.ListWorkorderTitle_job}"/>
-                            </f:facet>
-                            <h:outputText value="#{item.preis}"/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">
