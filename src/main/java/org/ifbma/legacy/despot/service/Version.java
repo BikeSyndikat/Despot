@@ -13,27 +13,15 @@ public class Version {
 
     private static final Logger LOG = Logger.getLogger(Version.class.getCanonicalName());
 
-    private String version;
+    private final String version;
 
     private final String info;
 
     public Version() {
         LOG.severe("started..");
-        final Package pkg = getClass().getPackage();
-        version = pkg.getImplementationVersion();
-        if (version == null) {
-            version = "-";
-        }
-        LOG.severe(version);
-        StringBuilder sb = new StringBuilder(version);
-        sb.append("\nImplementationTitle: ").append(pkg.getImplementationTitle());
-        sb.append("\nImplementationVendor: ").append(pkg.getImplementationVendor());
-        sb.append("\nImplementationVersion: ").append(pkg.getImplementationVersion());
-        sb.append("\nSpecificationTitle: ").append(pkg.getSpecificationTitle());
-        sb.append("\nSpecificationVendor: ").append(pkg.getSpecificationVendor());
-        sb.append("\nSpecificationVersion: ").append(pkg.getSpecificationVersion());
-        sb.append("\nName: ").append(pkg.getName());
-        info = sb.toString();
+        org.ifbma.legacy.despot.entities.Version v = new org.ifbma.legacy.despot.entities.Version();
+        version = v.getVersion();
+        info = v.getInfo();
     }
 
     /**
