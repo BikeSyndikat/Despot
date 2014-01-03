@@ -1,5 +1,6 @@
-root { 
+root {
     display: block;
+    width: -moz-fit-content;
 }
 
 body {
@@ -7,6 +8,7 @@ body {
     color: #3a4f54;
     background-color: #dfecf1;
     font-size: small;
+    width: -moz-fit-content;
 }
 
 a {
@@ -15,6 +17,7 @@ a {
 
 table {
     empty-cells: show;
+    width: -moz-fit-content;
 }
 
 form.jsfcrud_list_form th, td th {
