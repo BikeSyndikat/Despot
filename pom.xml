@@ -9,7 +9,7 @@
 
     <groupId>org.ifbma.legacy</groupId>
     <artifactId>LegacyDespot</artifactId>
-    <version>1.0.5-SNAPSHOT</version>
+    <version>1.0.5-PRIMEFACES-SNAPSHOT</version>
     <packaging>war</packaging>
 
     <organization>
