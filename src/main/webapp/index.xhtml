@@ -1,19 +1,22 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://java.sun.com/jsf/html">
-    <h:head>
-        <title>Legacy Dispo</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
-    </h:head>
-    <h:body>
-        Legacy Dispo
-        <br />
-        <h:link outcome="/jsf/customer/List" value="${bundle.ViewCustomerShowAllLink}"/>
-        <br />
-        <h:link outcome="/jsf/workorder/List" value="${bundle.ViewWorkorderShowAllLink}"/>
-        <br />
-        <br />
-        <h:outputText value="#{version.version}"/>
-    </h:body>
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="Legacy Dispo"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <br />
+            <h:link outcome="/jsf/customer/List" value="${bundle.ViewCustomerShowAllLink}"/>
+            <br />
+            <h:link outcome="/jsf/workorder/List" value="${bundle.ViewWorkorderShowAllLink}"/>
+            <br />
+            <br />
+            <h:outputText value="#{version.version}"/>
+
+        </ui:define>
+    </ui:composition>
 </html>
