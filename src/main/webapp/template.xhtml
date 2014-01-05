@@ -19,8 +19,10 @@
 
         <br />
         <br />
+        <h:outputText value="#{loginBean.remoteUser}"/>
+        <br />
         <h:outputText value="#{version.version}"/>
-
+        <h:link outcome="/logout" value="logout" rendered="#{loginBean.loggedIn}" />
     </h:body>
 
 </html>
