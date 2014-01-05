@@ -25,12 +25,13 @@
         <display-name>LogIn</display-name>
         <web-resource-collection>
             <web-resource-name>webapp</web-resource-name>
-            <description/>
-            <url-pattern>/*</url-pattern>
+            <description>please log in</description>
+            <url-pattern>/jsf/*</url-pattern>
+            <url-pattern>/faces/jsf/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
-            <description/>
-            <role-name>jonas</role-name>
+            <description>be a rider!</description>
+            <role-name>rider</role-name>
         </auth-constraint>
         <user-data-constraint>
             <description/>
@@ -38,10 +39,15 @@
         </user-data-constraint>
     </security-constraint>
     <login-config>
-        <auth-method>BASIC</auth-method>
+        <auth-method>FORM</auth-method>
+        <realm-name>file</realm-name><!-- the glassfish file realm. -->
+        <form-login-config>
+            <form-login-page>/faces/login.xhtml</form-login-page>
+            <form-error-page>/faces/error.xhtml</form-error-page>
+        </form-login-config>
     </login-config>
     <security-role>
-        <description/>
-        <role-name>jonas</role-name>
+        <description>yeah, be a rider.</description>
+        <role-name>rider</role-name>
     </security-role>
 </web-app>
