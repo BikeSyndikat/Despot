@@ -21,7 +21,7 @@
         <br />
         <h:outputText value="#{loginBean.remoteUser}"/>
         <br />
-        <h:outputText value="#{version.version}"/>
+        <h:outputText value="#{bundle.VersionLabel}: #{version.version}"/>
         <h:link outcome="/logout" value="logout" rendered="#{loginBean.loggedIn}" />
     </h:body>
 
