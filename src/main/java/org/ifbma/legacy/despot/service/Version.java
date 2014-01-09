@@ -1,5 +1,7 @@
 package org.ifbma.legacy.despot.service;
 
+import java.text.DateFormat;
+import java.util.Date;
 import java.util.logging.Logger;
 import javax.ejb.Singleton;
 import javax.faces.bean.ManagedBean;
@@ -42,5 +44,11 @@ public class Version {
     @Path("Info")
     public String getInfo() {
         return info;
+    }
+
+    @GET
+    @Path("Timestamp")
+    public String getTimestamp() {
+        return DateFormat.getInstance().format(new Date());
     }
 }

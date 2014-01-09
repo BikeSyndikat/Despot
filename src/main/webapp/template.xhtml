@@ -19,10 +19,12 @@
 
         <br />
         <br />
-        <h:outputText value="#{loginBean.remoteUser}"/>
-        <br />
-        <h:outputText value="#{bundle.VersionLabel}: #{version.version}"/>
-        <h:link outcome="/logout" value="logout" rendered="#{loginBean.loggedIn}" />
+        <h:outputText value="#{bundle.VersionLabel}: #{version.version} - #{version.timestamp}"/>
+        <p>
+            <h:outputText value="#{loginBean.remoteUser}"/>
+            <br />
+            <h:link outcome="/logout" value="logout" rendered="#{loginBean.loggedIn}" />
+        </p>
     </h:body>
 
 </html>
