@@ -71,6 +71,9 @@ public class Workorder implements Serializable {
     @Column(length = 254)
     private String firmierung1;
 
+    @Transient
+    private Boolean open;
+
     public Workorder() {
     }
 
@@ -208,6 +211,22 @@ public class Workorder implements Serializable {
 
     public void setFirmierung1(String firmierung1) {
         this.firmierung1 = firmierung1;
+    }
+
+    public Boolean isOpen() {
+        if (fahrernr == null) {
+            open = Boolean.TRUE;
+        } else if (fahrernr.intValue() <= 1) {
+            open = Boolean.TRUE;
+        } else {
+            open = Boolean.FALSE;
+        }
+        return open;
+    }
+
+    public void setOpen(Boolean open) {
+        this.open = open;
+        this.fahrernr = 0;
     }
 
 }
