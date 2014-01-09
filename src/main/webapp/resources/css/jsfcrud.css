@@ -78,6 +78,33 @@ tr.jsfcrud_even_row {
     color: #4e6a71;
 }
 
+#topwardPage, #bottomwardPage, #pagerCounter {
+    width: 10em;
+    white-space: nowrap;
+    // float: none;
+    bottom: 0;
+    //left: 0;
+    position: absolute;
+}
+
+#topwardPage {
+    left: 0;
+}
+
+#bottomwardPage {
+    left: 22em;
+}
+
+#pagerCounter {
+    left: 11em;
+}
+
+#pagerNavigation {
+    white-space: nowrap;
+    // float: none;
+    position: relative;
+}
+
 #busyImage {
     position: absolute;
     left: 50%;

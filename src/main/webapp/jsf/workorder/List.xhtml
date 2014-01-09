@@ -16,9 +16,17 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListWorkorderEmpty}" rendered="#{workorderController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{workorderController.items.rowCount > 0}">
-                    <h:outputText value="#{workorderController.pagination.pageFirstItem + 1}..#{workorderController.pagination.pageLastItem + 1}/#{workorderController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{workorderController.previous}" value="#{bundle.Previous} #{workorderController.pagination.pageSize}" rendered="#{workorderController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{workorderController.next}" value="#{bundle.Next} #{workorderController.pagination.pageSize}" rendered="#{workorderController.pagination.hasNextPage}"/>&nbsp;
+                    <div id="pagerNavigation">
+                        <div id="topwardPage">
+                            <h:commandLink action="#{workorderController.previous}" value="#{bundle.Previous} #{workorderController.pagination.pageSize}" rendered="#{workorderController.pagination.hasPreviousPage}"/>&nbsp;
+                        </div>
+                        <div id="pagerCounter">
+                            <h:outputText value="#{workorderController.pagination.pageFirstItem + 1}..#{workorderController.pagination.pageLastItem + 1}/#{workorderController.pagination.itemsCount}"/>&nbsp;
+                        </div>
+                        <div id="bottomwardPage">
+                            <h:commandLink action="#{workorderController.next}" value="#{bundle.Next} #{workorderController.pagination.pageSize}" rendered="#{workorderController.pagination.hasNextPage}"/>&nbsp;
+                        </div>
+                    </div>
                     <h:dataTable value="#{workorderController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">

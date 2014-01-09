@@ -16,9 +16,17 @@
                 </h:panelGroup>
                 <h:outputText escape="false" value="#{bundle.ListCustomerEmpty}" rendered="#{customerController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{customerController.items.rowCount > 0}">
-                    <h:outputText value="#{customerController.pagination.pageFirstItem + 1}..#{customerController.pagination.pageLastItem + 1}/#{customerController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{customerController.previous}" value="#{bundle.Previous} #{customerController.pagination.pageSize}" rendered="#{customerController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{customerController.next}" value="#{bundle.Next} #{customerController.pagination.pageSize}" rendered="#{customerController.pagination.hasNextPage}"/>&nbsp;
+                    <div id="pagerNavigation">
+                        <div id="topwardPage">
+                            <h:commandLink action="#{customerController.previous}" value="#{bundle.Previous} #{customerController.pagination.pageSize}" rendered="#{customerController.pagination.hasPreviousPage}"/>&nbsp;
+                        </div>
+                        <div id="pagerCounter">
+                            <h:outputText value="#{customerController.pagination.pageFirstItem + 1}..#{customerController.pagination.pageLastItem + 1}/#{customerController.pagination.itemsCount}"/>&nbsp;
+                        </div>
+                        <div id="bottomwardPage">
+                            <h:commandLink action="#{customerController.next}" value="#{bundle.Next} #{customerController.pagination.pageSize}" rendered="#{customerController.pagination.hasNextPage}"/>&nbsp;
+                        </div>
+                    </div>
                     <h:dataTable value="#{customerController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
