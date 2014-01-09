@@ -26,7 +26,6 @@
         <web-resource-collection>
             <web-resource-name>webapp</web-resource-name>
             <description>please log in</description>
-            <url-pattern>/jsf/*</url-pattern>
             <url-pattern>/faces/jsf/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
