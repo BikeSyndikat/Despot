@@ -24,7 +24,7 @@ CREATE OR REPLACE VIEW workorder AS
 
    FROM "Auftragsannahme"
    JOIN "Rechnungskunden" ON "Auftragsannahme"."Kuerzel" = "Rechnungskunden"."ID"
-  WHERE "Auftragsannahme"."Dat" >= (date_trunc('month'::text, now()) - '1 day'::interval)
+  WHERE "Auftragsannahme"."Dat" >= (date_trunc('day'::text, now()) - '00:00:00'::interval)
   ORDER BY "Auftragsannahme"."Dat" DESC, "Auftragsannahme"."Uhr" DESC;
 
 DROP VIEW IF EXISTS customer;
