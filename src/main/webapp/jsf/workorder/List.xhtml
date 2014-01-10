@@ -57,7 +57,7 @@
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListWorkorderTitle_fahrernr}"/>
                             </f:facet>
-                            <h:outputText value="&nbsp;&nbsp;#{item.fahrernr}&nbsp;&nbsp;"  style="#{item.isOpen() ? 'background:#6EFF03' : ''} "/>
+                            <h:outputText value="&nbsp;&nbsp;#{item.fahrernr}&nbsp;&nbsp;"  style="#{item.isUndispatched() ? 'background:#6EFF03' : ''} "/>
                         </h:column>
                         <h:column>
                             <f:facet name="header">

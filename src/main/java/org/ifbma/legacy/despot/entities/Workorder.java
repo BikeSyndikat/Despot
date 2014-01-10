@@ -73,7 +73,7 @@ public class Workorder implements Serializable {
     private String firmierung1;
 
     @Transient
-    private Boolean open;
+    private Boolean undispatched;
 
     public Workorder() {
     }
@@ -214,19 +214,19 @@ public class Workorder implements Serializable {
         this.firmierung1 = firmierung1;
     }
 
-    public Boolean isOpen() {
+    public Boolean isUndispatched() {
         if (fahrernr == null) {
-            open = Boolean.TRUE;
+            undispatched = Boolean.TRUE;
         } else if (fahrernr.intValue() <= 1) {
-            open = Boolean.TRUE;
+            undispatched = Boolean.TRUE;
         } else {
-            open = Boolean.FALSE;
+            undispatched = Boolean.FALSE;
         }
-        return open;
+        return undispatched;
     }
 
-    public void setOpen(Boolean open) {
-        this.open = open;
+    public void setUndispatched(Boolean open) {
+        this.undispatched = open;
         this.fahrernr = 0;
     }
 
