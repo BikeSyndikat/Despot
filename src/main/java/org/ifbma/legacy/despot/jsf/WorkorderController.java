@@ -153,7 +153,10 @@ public class WorkorderController implements Serializable {
     }
 
     public DataModel getItems() {
-        return getPagination().createPageDataModel();
+        if (items == null) {
+            items = getPagination().createPageDataModel();
+        }
+        return items;
     }
 
     private void recreateModel() {
