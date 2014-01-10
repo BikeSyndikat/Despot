@@ -2,7 +2,6 @@ package org.ifbma.legacy.despot.service;
 
 import java.text.DateFormat;
 import java.util.Date;
-import java.util.logging.Logger;
 import javax.ejb.Singleton;
 import javax.faces.bean.ManagedBean;
 import javax.ws.rs.GET;
@@ -13,18 +12,8 @@ import javax.ws.rs.Path;
 @ManagedBean
 public class Version {
 
-    private static final Logger LOG = Logger.getLogger(Version.class.getCanonicalName());
-
-    private final String version;
-
-    private final String info;
-
-    public Version() {
-        LOG.severe("started..");
-        org.ifbma.legacy.despot.entities.Version v = new org.ifbma.legacy.despot.entities.Version();
-        version = v.getVersion();
-        info = v.getInfo();
-    }
+    private final String version = org.ifbma.legacy.despot.entities.Version.getVersion();
+    private final String info = org.ifbma.legacy.despot.entities.Version.getInfo();
 
     /**
      * Get the implementation version. This one was available on my JBoss AS
@@ -49,6 +38,6 @@ public class Version {
     @GET
     @Path("Timestamp")
     public String getTimestamp() {
-        return DateFormat.getInstance().format(new Date());
+        return DateFormat.getTimeInstance(DateFormat.LONG).format(new Date());
     }
 }
