@@ -61,6 +61,12 @@
                         </h:column>
                         <h:column>
                             <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWorkorderTitle_preis}"/>
+                            </f:facet>
+                            <h:outputText value="&nbsp;&nbsp;#{item.preis}&nbsp;&nbsp;"  style="#{item.kuerzel=='bar' ? 'color:#FF6E03;float:right' : ''} "/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
                             <h:commandLink action="#{workorderController.prepareView}" value="#{bundle.ListWorkorderViewLink}"/>
