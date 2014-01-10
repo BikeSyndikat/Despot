@@ -2,6 +2,7 @@ package org.ifbma.legacy.despot.jsf;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,10 +22,12 @@ import org.ifbma.legacy.despot.jsfbeans.WorkorderFacade;
 @SessionScoped
 public class WorkorderController implements Serializable {
 
+    static int PAGE_SIZE = 10;
+
     private Workorder current;
     private DataModel items = null;
     @EJB
-    private org.ifbma.legacy.despot.jsfbeans.WorkorderFacade ejbFacade;
+    WorkorderFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
@@ -39,13 +42,22 @@ public class WorkorderController implements Serializable {
         return current;
     }
 
+    @PostConstruct
+    public void initialize() {
+        int pageSize = Integer.parseInt(ResourceBundle.getBundle("/Bundle")
+                .getString("Workorder_Pagesize"));
+        if (pageSize > 0) {
+            PAGE_SIZE = pageSize;
+        }
+    }
+
     private WorkorderFacade getFacade() {
         return ejbFacade;
     }
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(PAGE_SIZE) {
 
                 @Override
                 public int getItemsCount() {
@@ -54,7 +66,8 @@ public class WorkorderController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(
+                            new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -81,10 +94,12 @@ public class WorkorderController implements Serializable {
     public String create() {
         try {
             getFacade().create(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("WorkorderCreated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle")
+                    .getString("WorkorderCreated"));
             return prepareCreate();
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle")
+                    .getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -98,10 +113,12 @@ public class WorkorderController implements Serializable {
     public String update() {
         try {
             getFacade().edit(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("WorkorderUpdated"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle")
+                    .getString("WorkorderUpdated"));
             return "View";
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle")
+                    .getString("PersistenceErrorOccured"));
             return null;
         }
     }
@@ -131,9 +148,11 @@ public class WorkorderController implements Serializable {
     private void performDestroy() {
         try {
             getFacade().remove(current);
-            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle").getString("WorkorderDeleted"));
+            JsfUtil.addSuccessMessage(ResourceBundle.getBundle("/Bundle")
+                    .getString("WorkorderDeleted"));
         } catch (Exception e) {
-            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle").getString("PersistenceErrorOccured"));
+            JsfUtil.addErrorMessage(e, ResourceBundle.getBundle("/Bundle")
+                    .getString("PersistenceErrorOccured"));
         }
     }
 
@@ -148,7 +167,8 @@ public class WorkorderController implements Serializable {
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(
+                    new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -221,7 +241,9 @@ public class WorkorderController implements Serializable {
                 Workorder o = (Workorder) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Workorder.class.getName());
+                throw new IllegalArgumentException("object " + object
+                        + " is of type " + object.getClass().getName()
+                        + "; expected type: " + Workorder.class.getName());
             }
         }
 

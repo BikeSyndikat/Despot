@@ -2,6 +2,7 @@ package org.ifbma.legacy.despot.jsf;
 
 import java.io.Serializable;
 import java.util.ResourceBundle;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,14 +22,25 @@ import org.ifbma.legacy.despot.jsfbeans.CustomerFacade;
 @SessionScoped
 public class CustomerController implements Serializable {
 
+    static int PAGE_SIZE = 10;
+
     private Customer current;
     private DataModel items = null;
     @EJB
-    private org.ifbma.legacy.despot.jsfbeans.CustomerFacade ejbFacade;
+    CustomerFacade ejbFacade;
     private PaginationHelper pagination;
     private int selectedItemIndex;
 
     public CustomerController() {
+    }
+
+    @PostConstruct
+    public void initialize() {
+        int pageSize = Integer.parseInt(ResourceBundle.getBundle("/Bundle")
+                .getString("Customer_Pagesize"));
+        if (pageSize > 0) {
+            PAGE_SIZE = pageSize;
+        }
     }
 
     public Customer getSelected() {
@@ -45,7 +57,7 @@ public class CustomerController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(PAGE_SIZE) {
 
                 @Override
                 public int getItemsCount() {
@@ -54,7 +66,8 @@ public class CustomerController implements Serializable {
 
                 @Override
                 public DataModel createPageDataModel() {
-                    return new ListDataModel(getFacade().findRange(new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
+                    return new ListDataModel(getFacade().findRange(
+                            new int[]{getPageFirstItem(), getPageFirstItem() + getPageSize()}));
                 }
             };
         }
@@ -148,7 +161,8 @@ public class CustomerController implements Serializable {
             }
         }
         if (selectedItemIndex >= 0) {
-            current = getFacade().findRange(new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
+            current = getFacade().findRange(
+                    new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
     }
 
@@ -221,7 +235,9 @@ public class CustomerController implements Serializable {
                 Customer o = (Customer) object;
                 return getStringKey(o.getId());
             } else {
-                throw new IllegalArgumentException("object " + object + " is of type " + object.getClass().getName() + "; expected type: " + Customer.class.getName());
+                throw new IllegalArgumentException("object " + object
+                        + " is of type " + object.getClass().getName()
+                        + "; expected type: " + Customer.class.getName());
             }
         }
 
