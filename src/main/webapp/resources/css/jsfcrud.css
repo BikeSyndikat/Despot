@@ -102,6 +102,12 @@ tr.jsfcrud_even_row {
     position: relative;
 }
 
+.indexLink {
+    font: bold xx-large/200% "";
+    border: 1px solid #e33b06;
+    margin: 1em;
+}
+
 #busyImage {
     position: absolute;
     left: 50%;

@@ -10,9 +10,13 @@
         </ui:define>
         <ui:define name="body">
             <br />
-            <h:link outcome="/jsf/customer/List" value="${bundle.ViewCustomerShowAllLink}"/>
+            <h:link outcome="/jsf/customer/List"
+                    value="${bundle.ViewCustomerShowAllLink}"
+                    styleClass="indexLink"/>
             <br />
-            <h:link outcome="/jsf/workorder/List" value="${bundle.ViewWorkorderShowAllLink}"/>
+            <h:link outcome="/jsf/workorder/List"
+                    value="${bundle.ViewWorkorderShowAllLink}"
+                    styleClass="indexLink"/>
 
         </ui:define>
     </ui:composition>
