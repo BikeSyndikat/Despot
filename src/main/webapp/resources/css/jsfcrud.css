@@ -81,9 +81,7 @@ tr.jsfcrud_even_row {
 #topwardPage, #bottomwardPage, #pagerCounter {
     width: 10em;
     white-space: nowrap;
-    // float: none;
     bottom: 0;
-    //left: 0;
     position: absolute;
 }
 
@@ -101,7 +99,6 @@ tr.jsfcrud_even_row {
 
 #pagerNavigation {
     white-space: nowrap;
-    // float: none;
     position: relative;
 }
 
