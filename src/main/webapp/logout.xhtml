@@ -2,7 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
@@ -11,13 +13,21 @@
         <ui:define name="body">
             #{loginBean.logout()}
             <h:form>
-                <h:outputLabel for="usernameInput">#{bundle['login.username']}:</h:outputLabel>
-                <h:inputText id="usernameInput" value="#{loginBean.username}" required="true" />
-                <br />
-                <h:outputLabel for="passwordInput">#{bundle['login.password']}:</h:outputLabel>
-                <h:inputSecret id="passwordInput" value="#{loginBean.password}" required="true" />
-                <br />
-                <h:commandButton value="${bundle['login.submit']}" action="#{loginBean.login}" />
+                <p:panel id="panel">
+                    <f:facet name="header">
+                        Log in
+                    </f:facet>
+                    <p:messages id="messages" />
+                    <h:panelGrid columns="2">
+                        <p:outputLabel for="usernameInput">#{bundle['login.username']}:</p:outputLabel>
+                        <p:inputText id="usernameInput" value="#{loginBean.username}" required="true" />
+                        <p:outputLabel for="passwordInput">#{bundle['login.password']}:</p:outputLabel>
+                        <p:password id="passwordInput" value="#{loginBean.password}" required="true" />
+                    </h:panelGrid>
+                    <f:facet name="footer">
+                        <p:commandButton value="${bundle['login.submit']}" action="#{loginBean.login}" />
+                    </f:facet>
+                </p:panel>
             </h:form>
         </ui:define>
     </ui:composition>
