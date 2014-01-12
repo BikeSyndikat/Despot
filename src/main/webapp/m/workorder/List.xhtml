@@ -1,0 +1,136 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view  xmlns="http://www.w3.org/1999/xhtml"
+         xmlns:p="http://primefaces.org/ui"
+         xmlns:pm="http://primefaces.org/mobile"
+         xmlns:ui="http://java.sun.com/jsf/facelets"
+         xmlns:h="http://java.sun.com/jsf/html"
+         xmlns:f="http://java.sun.com/jsf/core"
+         xmlns:c="http://java.sun.com/jsp/jstl/core"
+         contentType="text/html"
+         renderKitId="PRIMEFACES_MOBILE"
+         >
+    <pm:page title="Hello World">
+        <pm:view id="List">
+            <pm:header title="#{bundle.ListWorkorderTitle}">
+                <f:facet name="left">
+                    <p:button value="Back" icon="back" href="#List"/>
+                </f:facet>
+                <f:facet name="right">
+                    <p:button value="Settings" icon="gear" href="#settings"/>
+                </f:facet>
+            </pm:header>
+            <pm:content>
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListWorkorderEmpty}" rendered="#{workorderController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{workorderController.items.rowCount > 0}">
+                    <h:outputText value="#{workorderController.pagination.pageFirstItem + 1}..#{workorderController.pagination.pageLastItem + 1}/#{workorderController.pagination.itemsCount}"/>&nbsp;
+                    <p:dataList value="#{workorderController.items}" var="item" type="inset" >
+                        <h:outputLink value="#workorder#{item.id}">
+                            <p>
+                                <h:outputText value="#{bundle.ListWorkorderTitle_von}: " style="font-weight: bold;"/>
+                                <h:outputText value="#{item.von}"/>
+                                <h:outputText value="&nbsp;"/>
+
+                                <h:outputText value="#{bundle.ListWorkorderTitle_ueber}: " style="font-weight: bold;"/>
+                                <h:outputText value="#{item.ueber}"/>
+                                <h:outputText value="&nbsp;"/>
+
+                                <h:outputText value="#{bundle.ListWorkorderTitle_nach}: " style="font-weight: bold;"/>
+                                <h:outputText value="#{item.nach}"/>
+                            </p>
+                            <p>
+                                <h:outputText value="#{bundle.ListWorkorderTitle_uhr}: " style="font-weight: bold;"/>
+                                <h:outputText value="#{item.uhr}"/>
+                                <h:outputText value="&nbsp;"/>
+
+                                <h:outputText value="#{bundle.ListWorkorderTitle_fahrernr}: " style="font-weight: bold;"/>
+                                <h:outputText value="#{item.fahrernr}"/>
+                                <h:outputText value="&nbsp;"/>
+                                <h:outputText value="&nbsp;"/>
+                                <h:outputText value="&nbsp;"/>
+                            </p>
+                        </h:outputLink>
+                    </p:dataList>
+                    <h:form styleClass="jsfcrud_list_form">
+                        <pm:buttonGroup
+                            orientation="horizontal"
+                            rendered="#{workorderController.items.rowCount > workorderController.pagination.pageSize}">
+                            <h:commandButton
+                                action="#{workorderController.previous}"
+                                value="#{bundle.Previous} #{workorderController.pagination.pageSize}"
+                                rendered="#{workorderController.pagination.hasPreviousPage}"/>
+                            <h:commandButton
+                                action="#{workorderController.next}"
+                                value="#{bundle.Next} #{workorderController.pagination.pageSize}"
+                                rendered="#{workorderController.pagination.hasNextPage}"/>
+                        </pm:buttonGroup>
+                    </h:form>
+                </h:panelGroup>
+            </pm:content>
+            <pm:footer>
+                ${version.version}<br/>
+                ${version.timestamp}
+            </pm:footer>
+        </pm:view>
+
+        <c:forEach items="#{workorderController.itemsAsList}" var="item" >
+            <pm:view id="workorder#{item.id}">
+                <pm:header title="Tour #{item.id}">
+                    <f:facet name="left">
+                        <p:button value="Back" icon="back" href="#List"/>
+                    </f:facet>
+                    <f:facet name="right">
+                        <p:button value="Settings" icon="gear" href="#settings"/>
+                    </f:facet>
+                </pm:header>
+                <pm:content>
+                    <h:panelGrid columns="2">
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_id}"/>
+                        <h:outputText value="#{item.id}" title="#{bundle.ViewWorkorderTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_dat}"/>
+                        <h:outputText value="#{item.dat}" title="#{bundle.ViewWorkorderTitle_dat}">
+                            <f:convertNumber pattern="#00" />
+                        </h:outputText>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_uhr}"/>
+                        <h:outputText value="#{item.uhr}" title="#{bundle.ViewWorkorderTitle_uhr}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_von}"/>
+                        <h:outputText value="#{item.von}" title="#{bundle.ViewWorkorderTitle_von}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_ueber}"/>
+                        <h:outputText value="#{item.ueber}" title="#{bundle.ViewWorkorderTitle_ueber}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_nach}"/>
+                        <h:outputText value="#{item.nach}" title="#{bundle.ViewWorkorderTitle_nach}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_job}"/>
+                        <h:outputText value="#{item.job}" title="#{bundle.ViewWorkorderTitle_job}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_fahrschecknr}"/>
+                        <h:outputText value="#{item.fahrschecknr}" title="#{bundle.ViewWorkorderTitle_fahrschecknr}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_preis}"/>
+                        <h:outputText value="#{item.preis}" title="#{bundle.ViewWorkorderTitle_preis}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_fahrernr}"/>
+                        <h:outputText value="#{item.fahrernr}" title="#{bundle.ViewWorkorderTitle_fahrernr}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_typ}"/>
+                        <h:outputText value="#{item.typ}" title="#{bundle.ViewWorkorderTitle_typ}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_preischeck}"/>
+                        <h:outputText value="#{item.preischeck}" title="#{bundle.ViewWorkorderTitle_preischeck}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_fahrscheckcheck}"/>
+                        <h:outputText value="#{item.fahrscheckcheck}" title="#{bundle.ViewWorkorderTitle_fahrscheckcheck}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_sonderkonditionen}"/>
+                        <h:outputText value="#{item.sonderkonditionen}" title="#{bundle.ViewWorkorderTitle_sonderkonditionen}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_summe}"/>
+                        <h:outputText value="#{item.summe}" title="#{bundle.ViewWorkorderTitle_summe}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_kuerzel}"/>
+                        <h:outputText value="#{item.kuerzel}" title="#{bundle.ViewWorkorderTitle_kuerzel}"/>
+                        <h:outputText value="#{bundle.ViewWorkorderLabel_firmierung1}"/>
+                        <h:outputText value="#{item.firmierung1}" title="#{bundle.ViewWorkorderTitle_firmierung1}"/>
+                    </h:panelGrid>
+                </pm:content>
+                <pm:footer>
+                    ${version.version}<br/>
+                    ${version.timestamp}
+                </pm:footer>
+            </pm:view>
+        </c:forEach>
+    </pm:page>
+</f:view>

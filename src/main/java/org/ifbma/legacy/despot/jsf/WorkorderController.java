@@ -1,6 +1,7 @@
 package org.ifbma.legacy.despot.jsf;
 
 import java.io.Serializable;
+import java.util.List;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -170,6 +171,22 @@ public class WorkorderController implements Serializable {
             current = getFacade().findRange(
                     new int[]{selectedItemIndex, selectedItemIndex + 1}).get(0);
         }
+    }
+
+    /**
+     * Return items as List, as c:forEach can not cope with DataModel and all
+     * the other collection tags can not build pm:view.
+     * <p/>
+     * As the List should correspond to DataModel, it has to follow the
+     * rebuilding pattern. So it calls getItems resulting in the query being
+     * put on the em twice.
+     * @return
+     */
+    public List<Workorder> getItemsAsList() {
+        getItems();
+        int start = getPagination().getPageFirstItem();
+        int end = getPagination().getPageFirstItem() + getPagination().getPageSize();
+        return getFacade().findRange(new int[]{start, end});
     }
 
     public DataModel getItems() {
