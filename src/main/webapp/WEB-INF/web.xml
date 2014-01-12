@@ -27,6 +27,7 @@
             <web-resource-name>webapp</web-resource-name>
             <description>please log in</description>
             <url-pattern>/faces/jsf/*</url-pattern>
+            <url-pattern>/faces/m/*</url-pattern>
         </web-resource-collection>
         <auth-constraint>
             <description>be a rider!</description>
