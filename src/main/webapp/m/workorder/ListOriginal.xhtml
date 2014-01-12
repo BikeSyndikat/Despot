@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ListWorkorderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:form styleClass="jsfcrud_list_form">
+                <h:panelGroup id="messagePanel" layout="block">
+                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                </h:panelGroup>
+                <h:outputText escape="false" value="#{bundle.ListWorkorderEmpty}" rendered="#{workorderController.items.rowCount == 0}"/>
+                <h:panelGroup rendered="#{workorderController.items.rowCount > 0}">
+                    <div id="pagerNavigation">
+                        <div id="topwardPage">
+                            <h:commandLink action="#{workorderController.previous}" value="#{bundle.Previous} #{workorderController.pagination.pageSize}" rendered="#{workorderController.pagination.hasPreviousPage}"/>&nbsp;
+                        </div>
+                        <div id="pagerCounter">
+                            <h:outputText value="#{workorderController.pagination.pageFirstItem + 1}..#{workorderController.pagination.pageLastItem + 1}/#{workorderController.pagination.itemsCount}"/>&nbsp;
+                        </div>
+                        <div id="bottomwardPage">
+                            <h:commandLink action="#{workorderController.next}" value="#{bundle.Next} #{workorderController.pagination.pageSize}" rendered="#{workorderController.pagination.hasNextPage}"/>&nbsp;
+                        </div>
+                    </div>
+                    <h:dataTable value="#{workorderController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWorkorderTitle_uhr}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.uhr}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWorkorderTitle_von}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.von}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWorkorderTitle_ueber}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.ueber}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWorkorderTitle_nach}"/>
+                            </f:facet>
+                            <h:outputText value="#{item.nach}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWorkorderTitle_fahrernr}"/>
+                            </f:facet>
+                            <h:outputText value="&nbsp;&nbsp;#{item.fahrernr}&nbsp;&nbsp;"  style="#{item.isUndispatched() ? 'background:#6EFF03' : ''} "/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="#{bundle.ListWorkorderTitle_preis}"/>
+                            </f:facet>
+                            <h:outputText value="&nbsp;&nbsp;#{item.preis}&nbsp;&nbsp;"  style="#{item.kuerzel=='bar' ? 'color:#FF6E03;float:right' : ''} "/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="&nbsp;"/>
+                            </f:facet>
+                            <h:commandLink action="#{workorderController.prepareView}" value="#{bundle.ListWorkorderViewLink}"/>
+                        </h:column>
+                    </h:dataTable>
+                </h:panelGroup>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ListWorkorderIndexLink}"/>
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
