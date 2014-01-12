@@ -132,5 +132,19 @@
                 </pm:footer>
             </pm:view>
         </c:forEach>
+
+        <pm:view id="settings">
+            <pm:header title="Settings">
+                <f:facet name="left">
+                    <p:button value="Back" icon="back" href="#List"/>
+                </f:facet>
+            </pm:header>
+            <pm:content>
+                <h:outputText value="#{loginBean.remoteUser}"/>
+                <br />
+                <p:button outcome="/logout" value="log out" rendered="#{loginBean.loggedIn}" />
+            </pm:content>
+        </pm:view>
+
     </pm:page>
 </f:view>
