@@ -14,7 +14,7 @@
         <pm:view id="List">
             <pm:header title="#{bundle.ListWorkorderTitle}">
                 <f:facet name="left">
-                    <p:button value="Back" icon="back" href="#List"/>
+                    <p:button value="Back" icon="back" href="/faces/m/index.xhtml"/>
                 </f:facet>
                 <f:facet name="right">
                     <p:button value="Settings" icon="gear" href="#settings"/>
@@ -54,7 +54,7 @@
                             </p>
                         </h:outputLink>
                     </p:dataList>
-                    <h:form styleClass="jsfcrud_list_form">
+                    <h:form>
                         <pm:buttonGroup
                             orientation="horizontal"
                             rendered="#{workorderController.items.rowCount > workorderController.pagination.pageSize}">
