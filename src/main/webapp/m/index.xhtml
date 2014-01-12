@@ -15,8 +15,10 @@
         <pm:view id="main">
             <pm:header title="Header" />
             <pm:content>
-                <h:button outcome="/m/workorder/List"
-                          value="${bundle.ViewWorkorderShowAllLink}"/>
+                <p:button outcome="/m/workorder/List"
+                          value="Views ${bundle.ViewWorkorderShowAllLink}"/>
+                <p:button outcome="/m/workorderPanel/List"
+                          value="Panels ${bundle.ViewWorkorderShowAllLink}"/>
             </pm:content>
         </pm:view>
     </pm:page>
