@@ -8,7 +8,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @XmlRootElement
-//@Cacheable(false)
+@Cacheable(false)
 @NamedQueries({
     @NamedQuery(name = "Workorder.findAll", query = "SELECT w FROM Workorder w"),
     @NamedQuery(name = "Workorder.findById", query = "SELECT w FROM Workorder w WHERE w.id = :id"),
