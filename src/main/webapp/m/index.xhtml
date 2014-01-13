@@ -13,13 +13,23 @@
         >
     <pm:page title="Hello World">
         <pm:view id="main">
-            <pm:header title="Header" />
+            <pm:header title="#{bundle.ListWorkorderTitle}">
+                <f:facet name="left">
+                    <p:button value="Back" icon="back" href="/"/>
+                </f:facet>
+                <f:facet name="right">
+                    <p:button value="Settings" icon="gear" href="#settings"/>
+                </f:facet>
+            </pm:header>
             <pm:content>
                 <p:button outcome="/m/workorder/List"
                           value="Views ${bundle.ViewWorkorderShowAllLink}"/>
                 <p:button outcome="/m/workorderPanel/List"
                           value="Panels ${bundle.ViewWorkorderShowAllLink}"/>
             </pm:content>
+            <pm:footer>
+                ${version.version} - ${version.timestamp}
+            </pm:footer>
         </pm:view>
         <pm:view id="settings">
             <pm:header title="Settings">
@@ -32,6 +42,9 @@
                 <br />
                 <p:button outcome="/logout" value="log out" rendered="#{loginBean.loggedIn}" />
             </pm:content>
+            <pm:footer>
+                ${version.version} - ${version.timestamp}
+            </pm:footer>
         </pm:view>
 
     </pm:page>

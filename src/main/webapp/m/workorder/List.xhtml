@@ -10,8 +10,8 @@
          contentType="text/html"
          renderKitId="PRIMEFACES_MOBILE"
          >
-    <pm:page title="Hello World">
         #{workorderController.recreateModel()}
+    <pm:page title="workorder list">
         <pm:view id="List">
             <pm:header title="#{bundle.ListWorkorderTitle}">
                 <f:facet name="left">
@@ -72,8 +72,7 @@
                 </h:panelGroup>
             </pm:content>
             <pm:footer>
-                ${version.version}<br/>
-                ${version.timestamp}
+                ${version.version} - ${version.timestamp}
             </pm:footer>
         </pm:view>
 
@@ -145,6 +144,9 @@
                 <br />
                 <p:button outcome="/logout" value="log out" rendered="#{loginBean.loggedIn}" />
             </pm:content>
+            <pm:footer>
+                ${version.version} - ${version.timestamp}
+            </pm:footer>
         </pm:view>
 
     </pm:page>

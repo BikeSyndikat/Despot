@@ -125,8 +125,7 @@
                 </h:panelGroup>
             </pm:content>
             <pm:footer>
-                ${version.version}<br/>
-                ${version.timestamp}
+                ${version.version} - ${version.timestamp}
             </pm:footer>
         </pm:view>
 
@@ -141,6 +140,9 @@
                 <br />
                 <p:button outcome="/logout" value="log out" rendered="#{loginBean.loggedIn}" />
             </pm:content>
+            <pm:footer>
+                ${version.version} - ${version.timestamp}
+            </pm:footer>
         </pm:view>
 
     </pm:page>
