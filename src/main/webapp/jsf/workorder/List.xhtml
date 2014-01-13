@@ -7,6 +7,9 @@
       xmlns:c="http://java.sun.com/jsp/jstl/core">
 
     <ui:composition template="/template.xhtml">
+        <ui:define name="evictCache">
+            #{workorderController.recreateModel()}
+        </ui:define>
         <ui:define name="title">
             <h:outputText value="#{bundle.ListWorkorderTitle}"></h:outputText>
         </ui:define>

@@ -3,11 +3,9 @@ package org.ifbma.legacy.despot.jsfbeans;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
-import javax.persistence.Query;
-import javax.persistence.TypedQuery;
+import javax.persistence.*;
 import javax.persistence.criteria.CriteriaQuery;
 import org.ifbma.legacy.despot.entities.Workorder;
 
@@ -24,6 +22,12 @@ public class WorkorderFacade extends AbstractFacade<Workorder> {
         return em;
     }
 
+    @PostConstruct
+    public void initialize() {
+        em.setProperty("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS.name());
+        LOG.info("set retrieveMode to " + CacheRetrieveMode.BYPASS.name());
+    }
+
     public WorkorderFacade() {
         super(Workorder.class);
     }
@@ -36,13 +40,20 @@ public class WorkorderFacade extends AbstractFacade<Workorder> {
      */
     @Override
     public List<Workorder> findRange(int[] range) {
+        evictCache();
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         Query q = getEntityManager().createQuery(cq);
         q.setMaxResults(range[1] - range[0] + 1);
         q.setFirstResult(range[0]);
-        q.setHint("javax.persistence.cache.storeMode", "REFRESH");
+        q.setHint("javax.persistence.cache.retrieveMode", CacheStoreMode.BYPASS.name());
         return q.getResultList();
+    }
+
+    public void evictCache() {
+        Cache cache = getEntityManager().getEntityManagerFactory().getCache();
+        cache.evict(entityClass);
+        LOG.info("evicted cache");
     }
 
     /**

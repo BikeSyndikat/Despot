@@ -5,6 +5,10 @@
     <persistence-unit name="LegacyDespot_1_PU" transaction-type="JTA">
         <jta-data-source>jdbc/legacyDispo</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
-        <properties/>
+        <properties>
+            <!--            <property name="eclipselink.logging.logger" value="ServerLogger"/>
+            <property name="eclipselink.logging.level.sql" value="FINE"/>
+            <property name="eclipselink.logging.parameters" value="true"/>-->
+        </properties>
     </persistence-unit>
 </persistence>
