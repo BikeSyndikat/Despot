@@ -58,7 +58,7 @@
                     <h:form>
                         <pm:buttonGroup
                             orientation="horizontal"
-                            rendered="#{workorderController.items.rowCount > workorderController.pagination.pageSize}">
+                            rendered="#{workorderController.pagination.itemsCount > workorderController.pagination.pageSize}">
                             <h:commandButton
                                 action="#{workorderController.previous}"
                                 value="#{bundle.Previous} #{workorderController.pagination.pageSize}"
