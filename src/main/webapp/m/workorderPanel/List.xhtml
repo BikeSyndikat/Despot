@@ -11,6 +11,7 @@
          renderKitId="PRIMEFACES_MOBILE"
          >
     <pm:page title="Hello World">
+        #{workorderController.recreateModel()}
         <pm:view id="List">
             <pm:header title="#{bundle.ListWorkorderTitle}">
                 <f:facet name="left">
