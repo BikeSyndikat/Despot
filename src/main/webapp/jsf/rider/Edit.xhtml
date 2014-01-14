@@ -17,10 +17,8 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditRiderLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{riderController.selected.id}"
-                                 title="#{bundle.EditRiderTitle_id}"
-                                 required="true"
-                                 requiredMessage="#{bundle.EditRiderRequiredMessage_id}"/>
+                    <h:outputText id="id" value="#{riderController.selected.id}"
+                                  title="#{bundle.EditRiderTitle_id}"/>
                     <h:outputLabel value="#{bundle.EditRiderLabel_riderNumber}"
                                    for="riderNumber" />
                     <h:inputText id="riderNumber"
