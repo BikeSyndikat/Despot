@@ -16,26 +16,34 @@
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputText value="#{bundle.ViewRiderLabel_id}"/>
-                    <h:outputText value="#{riderController.selected.id}" title="#{bundle.ViewRiderTitle_id}"/>
+                    <h:outputText value="#{riderController.selected.id}"
+                                  title="#{bundle.ViewRiderTitle_id}"/>
                     <h:outputText value="#{bundle.ViewRiderLabel_riderNumber}"/>
-                    <h:outputText value="#{riderController.selected.riderNumber}" title="#{bundle.ViewRiderTitle_riderNumber}"/>
+                    <h:outputText value="#{riderController.selected.riderNumber}"
+                                  title="#{bundle.ViewRiderTitle_riderNumber}"/>
                     <h:outputText value="#{bundle.ViewRiderLabel_anzahltouren}"/>
-                    <h:outputText value="#{riderController.selected.anzahltouren}" title="#{bundle.ViewRiderTitle_anzahltouren}"/>
+                    <h:outputText value="#{riderController.selected.anzahltouren}"
+                                  title="#{bundle.ViewRiderTitle_anzahltouren}"/>
                     <h:outputText value="#{bundle.ViewRiderLabel_letztetour}"/>
-                    <h:outputText value="#{riderController.selected.letztetour}" title="#{bundle.ViewRiderTitle_letztetour}">
+                    <h:outputText value="#{riderController.selected.letztetour}"
+                                  title="#{bundle.ViewRiderTitle_letztetour}">
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:outputText>
                     <h:outputText value="#{bundle.ViewRiderLabel_fullName}"/>
-                    <h:outputText value="#{riderController.selected.fullName}" title="#{bundle.ViewRiderTitle_fullName}"/>
+                    <h:outputText value="#{riderController.selected.fullName}"
+                                  title="#{bundle.ViewRiderTitle_fullName}"/>
                     <h:outputText value="#{bundle.ViewRiderLabel_status}"/>
-                    <h:outputText value="#{riderController.selected.status}" title="#{bundle.ViewRiderTitle_status}"/>
+                    <h:outputText value="#{riderController.selected.status}"
+                                  title="#{bundle.ViewRiderTitle_status}"/>
                 </h:panelGrid>
                 <br />
                 <h:link outcome="Edit" value="#{bundle.ViewRiderEditLink}"/>
                 <br />
-                <h:commandLink action="#{riderController.prepareCreate}" value="#{bundle.ViewRiderCreateLink}" />
+                <h:commandLink action="#{riderController.prepareCreate}"
+                               value="#{bundle.ViewRiderCreateLink}" />
                 <br />
-                <h:commandLink action="#{riderController.prepareList}" value="#{bundle.ViewRiderShowAllLink}"/>
+                <h:commandLink action="#{riderController.prepareList}"
+                               value="#{bundle.ViewRiderShowAllLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ViewRiderIndexLink}"/>

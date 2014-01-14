@@ -11,31 +11,61 @@
         </ui:define>
         <ui:define name="body">
             <h:panelGroup id="messagePanel" layout="block">
-                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                <h:messages errorStyle="color: red" infoStyle="color: green"
+                            layout="table"/>
             </h:panelGroup>
             <h:form>
                 <h:panelGrid columns="2">
                     <h:outputLabel value="#{bundle.EditRiderLabel_id}" for="id" />
-                    <h:inputText id="id" value="#{riderController.selected.id}" title="#{bundle.EditRiderTitle_id}" required="true" requiredMessage="#{bundle.EditRiderRequiredMessage_id}"/>
-                    <h:outputLabel value="#{bundle.EditRiderLabel_riderNumber}" for="riderNumber" />
-                    <h:inputText id="riderNumber" value="#{riderController.selected.riderNumber}" title="#{bundle.EditRiderTitle_riderNumber}" required="true" requiredMessage="#{bundle.EditRiderRequiredMessage_riderNumber}"/>
-                    <h:outputLabel value="#{bundle.EditRiderLabel_anzahltouren}" for="anzahltouren" />
-                    <h:inputText id="anzahltouren" value="#{riderController.selected.anzahltouren}" title="#{bundle.EditRiderTitle_anzahltouren}" required="true" requiredMessage="#{bundle.EditRiderRequiredMessage_anzahltouren}"/>
-                    <h:outputLabel value="#{bundle.EditRiderLabel_letztetour}" for="letztetour" />
-                    <h:inputText id="letztetour" value="#{riderController.selected.letztetour}" title="#{bundle.EditRiderTitle_letztetour}" >
+                    <h:inputText id="id" value="#{riderController.selected.id}"
+                                 title="#{bundle.EditRiderTitle_id}"
+                                 required="true"
+                                 requiredMessage="#{bundle.EditRiderRequiredMessage_id}"/>
+                    <h:outputLabel value="#{bundle.EditRiderLabel_riderNumber}"
+                                   for="riderNumber" />
+                    <h:inputText id="riderNumber"
+                                 value="#{riderController.selected.riderNumber}"
+                                 title="#{bundle.EditRiderTitle_riderNumber}"
+                                 required="true"
+                                 requiredMessage="#{bundle.EditRiderRequiredMessage_riderNumber}"/>
+                    <h:outputLabel value="#{bundle.EditRiderLabel_anzahltouren}"
+                                   for="anzahltouren" />
+                    <h:inputText id="anzahltouren"
+                                 value="#{riderController.selected.anzahltouren}"
+                                 title="#{bundle.EditRiderTitle_anzahltouren}"
+                                 required="true"
+                                 requiredMessage="#{bundle.EditRiderRequiredMessage_anzahltouren}"/>
+                    <h:outputLabel value="#{bundle.EditRiderLabel_letztetour}"
+                                   for="letztetour" />
+                    <h:inputText id="letztetour"
+                                 value="#{riderController.selected.letztetour}"
+                                 title="#{bundle.EditRiderTitle_letztetour}" >
                         <f:convertDateTime pattern="MM/dd/yyyy" />
                     </h:inputText>
-                    <h:outputLabel value="#{bundle.EditRiderLabel_fullName}" for="fullName" />
-                    <h:inputText id="fullName" value="#{riderController.selected.fullName}" title="#{bundle.EditRiderTitle_fullName}" required="true" requiredMessage="#{bundle.EditRiderRequiredMessage_fullName}"/>
-                    <h:outputLabel value="#{bundle.EditRiderLabel_status}" for="status" />
-                    <h:inputText id="status" value="#{riderController.selected.status}" title="#{bundle.EditRiderTitle_status}" required="true" requiredMessage="#{bundle.EditRiderRequiredMessage_status}"/>
+                    <h:outputLabel value="#{bundle.EditRiderLabel_fullName}"
+                                   for="fullName" />
+                    <h:inputText id="fullName"
+                                 value="#{riderController.selected.fullName}"
+                                 title="#{bundle.EditRiderTitle_fullName}"
+                                 required="true"
+                                 requiredMessage="#{bundle.EditRiderRequiredMessage_fullName}"/>
+                    <h:outputLabel value="#{bundle.EditRiderLabel_status}"
+                                   for="status" />
+                    <h:inputText id="status"
+                                 value="#{riderController.selected.status}"
+                                 title="#{bundle.EditRiderTitle_status}"
+                                 required="true"
+                                 requiredMessage="#{bundle.EditRiderRequiredMessage_status}"/>
                 </h:panelGrid>
-                <h:commandLink action="#{riderController.update}" value="#{bundle.EditRiderSaveLink}"/>
+                <h:commandLink action="#{riderController.update}"
+                               value="#{bundle.EditRiderSaveLink}"/>
                 <br />
                 <br />
                 <h:link outcome="View" value="#{bundle.EditRiderViewLink}"/>
                 <br />
-                <h:commandLink action="#{riderController.prepareList}" value="#{bundle.EditRiderShowAllLink}" immediate="true"/>
+                <h:commandLink action="#{riderController.prepareList}"
+                               value="#{bundle.EditRiderShowAllLink}"
+                               immediate="true"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.EditRiderIndexLink}" />

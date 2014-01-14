@@ -12,14 +12,23 @@
         <ui:define name="body">
             <h:form styleClass="jsfcrud_list_form">
                 <h:panelGroup id="messagePanel" layout="block">
-                    <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+                    <h:messages errorStyle="color: red" infoStyle="color: green"
+                                layout="table"/>
                 </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListRiderEmpty}" rendered="#{riderController.items.rowCount == 0}"/>
+                <h:outputText escape="false" value="#{bundle.ListRiderEmpty}"
+                              rendered="#{riderController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{riderController.items.rowCount > 0}">
                     <h:outputText value="#{riderController.pagination.pageFirstItem + 1}..#{riderController.pagination.pageLastItem + 1}/#{riderController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{riderController.previous}" value="#{bundle.Previous} #{riderController.pagination.pageSize}" rendered="#{riderController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{riderController.next}" value="#{bundle.Next} #{riderController.pagination.pageSize}" rendered="#{riderController.pagination.hasNextPage}"/>&nbsp;
-                    <h:dataTable value="#{riderController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
+                    <h:commandLink action="#{riderController.previous}"
+                                   value="#{bundle.Previous} #{riderController.pagination.pageSize}"
+                                   rendered="#{riderController.pagination.hasPreviousPage}"/>&nbsp;
+                    <h:commandLink action="#{riderController.next}"
+                                   value="#{bundle.Next} #{riderController.pagination.pageSize}"
+                                   rendered="#{riderController.pagination.hasNextPage}"/>&nbsp;
+                    <h:dataTable value="#{riderController.items}" var="item"
+                                 border="0" cellpadding="2" cellspacing="0"
+                                 rowClasses="jsfcrud_odd_row,jsfcrud_even_row"
+                                 rules="all" style="border:solid 1px">
                         <h:column>
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListRiderTitle_id}"/>
@@ -62,14 +71,17 @@
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{riderController.prepareView}" value="#{bundle.ListRiderViewLink}"/>
+                            <h:commandLink action="#{riderController.prepareView}"
+                                           value="#{bundle.ListRiderViewLink}"/>
                             <h:outputText value=" "/>
-                            <h:commandLink action="#{riderController.prepareEdit}" value="#{bundle.ListRiderEditLink}"/>
+                            <h:commandLink action="#{riderController.prepareEdit}"
+                                           value="#{bundle.ListRiderEditLink}"/>
                         </h:column>
                     </h:dataTable>
                 </h:panelGroup>
                 <br />
-                <h:commandLink action="#{riderController.prepareCreate}" value="#{bundle.ListRiderCreateLink}"/>
+                <h:commandLink action="#{riderController.prepareCreate}"
+                               value="#{bundle.ListRiderCreateLink}"/>
                 <br />
                 <br />
                 <h:link outcome="/index" value="#{bundle.ListRiderIndexLink}"/>
