@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+
+    <ui:composition template="/template.xhtml">
+        <ui:define name="title">
+            <h:outputText value="#{bundle.ViewRiderTitle}"></h:outputText>
+        </ui:define>
+        <ui:define name="body">
+            <h:panelGroup id="messagePanel" layout="block">
+                <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
+            </h:panelGroup>
+            <h:form>
+                <h:panelGrid columns="2">
+                    <h:outputText value="#{bundle.ViewRiderLabel_id}"/>
+                    <h:outputText value="#{riderController.selected.id}" title="#{bundle.ViewRiderTitle_id}"/>
+                    <h:outputText value="#{bundle.ViewRiderLabel_riderNumber}"/>
+                    <h:outputText value="#{riderController.selected.riderNumber}" title="#{bundle.ViewRiderTitle_riderNumber}"/>
+                    <h:outputText value="#{bundle.ViewRiderLabel_anzahltouren}"/>
+                    <h:outputText value="#{riderController.selected.anzahltouren}" title="#{bundle.ViewRiderTitle_anzahltouren}"/>
+                    <h:outputText value="#{bundle.ViewRiderLabel_letztetour}"/>
+                    <h:outputText value="#{riderController.selected.letztetour}" title="#{bundle.ViewRiderTitle_letztetour}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                    <h:outputText value="#{bundle.ViewRiderLabel_fullName}"/>
+                    <h:outputText value="#{riderController.selected.fullName}" title="#{bundle.ViewRiderTitle_fullName}"/>
+                    <h:outputText value="#{bundle.ViewRiderLabel_status}"/>
+                    <h:outputText value="#{riderController.selected.status}" title="#{bundle.ViewRiderTitle_status}"/>
+                </h:panelGrid>
+                <br />
+                <h:link outcome="Edit" value="#{bundle.ViewRiderEditLink}"/>
+                <br />
+                <h:commandLink action="#{riderController.prepareCreate}" value="#{bundle.ViewRiderCreateLink}" />
+                <br />
+                <h:commandLink action="#{riderController.prepareList}" value="#{bundle.ViewRiderShowAllLink}"/>
+                <br />
+                <br />
+                <h:link outcome="/index" value="#{bundle.ViewRiderIndexLink}"/>
+
+            </h:form>
+        </ui:define>
+    </ui:composition>
+
+</html>
