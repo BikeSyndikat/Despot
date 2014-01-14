@@ -20,9 +20,18 @@ import javax.xml.bind.annotation.XmlRootElement;
 public class Rider implements Serializable {
 
     private static final long serialVersionUID = 2L;
+
+    /**
+     * The following annotations where composed after consulting
+     * {@link http://stackoverflow.com/questions/11825643}.
+     * <p/>
+     */
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
+    @SequenceGenerator(name = "rider_id_seq", sequenceName = "rider_id_seq",
+            allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE,
+            generator = "rider_id_seq")
+    @Column(updatable = false)
     private Integer id;
     @Basic(optional = false)
     @NotNull
