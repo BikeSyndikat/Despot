@@ -3,6 +3,7 @@ package org.ifbma.legacy.despot.jsf;
 import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.ejb.EJB;
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.component.UIComponent;
@@ -16,6 +17,7 @@ import org.ifbma.legacy.despot.entities.Rider;
 import org.ifbma.legacy.despot.jsf.util.JsfUtil;
 import org.ifbma.legacy.despot.jsf.util.PaginationHelper;
 import org.ifbma.legacy.despot.jsfbeans.RiderFacade;
+import org.primefaces.event.CellEditEvent;
 
 @ManagedBean(name = "riderController")
 @SessionScoped
@@ -185,6 +187,17 @@ public class RiderController implements Serializable {
         getPagination().previousPage();
         recreateModel();
         return "List";
+    }
+
+    public void onCellEdit(CellEditEvent event) {
+        Object oldValue = event.getOldValue();
+        Object newValue = event.getNewValue();
+
+        if (newValue != null && !newValue.equals(oldValue)) {
+            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_INFO,
+                                                "Cell Changed", "Old: " + oldValue + ", New:" + newValue);
+            FacesContext.getCurrentInstance().addMessage(null, msg);
+        }
     }
 
     public SelectItem[] getItemsAvailableSelectMany() {
