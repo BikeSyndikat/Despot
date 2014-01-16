@@ -47,7 +47,7 @@ public class RiderController implements Serializable {
 
     public PaginationHelper getPagination() {
         if (pagination == null) {
-            pagination = new PaginationHelper(10) {
+            pagination = new PaginationHelper(getFacade().count()) {
 
                 @Override
                 public int getItemsCount() {
