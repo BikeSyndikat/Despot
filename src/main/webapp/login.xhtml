@@ -16,7 +16,7 @@
                     <f:facet name="header">
                         Log in
                     </f:facet>
-                    <p:messages id="messages" />
+                    <p:messages id="messages" autoUpdate="true"/>
                     <h:panelGrid columns="2">
                         <p:outputLabel for="usernameInput">#{bundle['login.username']}:</p:outputLabel>
                         <p:inputText id="usernameInput" value="#{loginBean.username}" required="true"  />
