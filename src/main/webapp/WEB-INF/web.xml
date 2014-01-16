@@ -43,7 +43,7 @@
         <realm-name>file</realm-name><!-- the glassfish file realm. -->
         <form-login-config>
             <form-login-page>/faces/login.xhtml</form-login-page>
-            <form-error-page>/faces/error.xhtml</form-error-page>
+            <form-error-page>/faces/login.xhtml</form-error-page>
         </form-login-config>
     </login-config>
     <security-role>
