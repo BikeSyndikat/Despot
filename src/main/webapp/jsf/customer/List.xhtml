@@ -3,65 +3,109 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
     <ui:composition template="/template.xhtml">
         <ui:define name="title">
             <h:outputText value="#{bundle.ListCustomerTitle}"></h:outputText>
         </ui:define>
         <ui:define name="body">
-            <h:form styleClass="jsfcrud_list_form">
+            <h:form styleClass="jsfcrud_list_form" id="form">
+                <p:growl id="messages" showDetail="true"/>
                 <h:panelGroup id="messagePanel" layout="block">
                     <h:messages errorStyle="color: red" infoStyle="color: green" layout="table"/>
                 </h:panelGroup>
-                <h:outputText escape="false" value="#{bundle.ListCustomerEmpty}" rendered="#{customerController.items.rowCount == 0}"/>
-                <h:panelGroup rendered="#{customerController.items.rowCount > 0}">
-                    <div id="pagerNavigation">
-                        <div id="topwardPage">
-                            <h:commandLink action="#{customerController.previous}" value="#{bundle.Previous} #{customerController.pagination.pageSize}" rendered="#{customerController.pagination.hasPreviousPage}"/>&nbsp;
-                        </div>
-                        <div id="pagerCounter">
-                            <h:outputText value="#{customerController.pagination.pageFirstItem + 1}..#{customerController.pagination.pageLastItem + 1}/#{customerController.pagination.itemsCount}"/>&nbsp;
-                        </div>
-                        <div id="bottomwardPage">
-                            <h:commandLink action="#{customerController.next}" value="#{bundle.Next} #{customerController.pagination.pageSize}" rendered="#{customerController.pagination.hasNextPage}"/>&nbsp;
-                        </div>
-                    </div>
-                    <h:dataTable value="#{customerController.items}" var="item" border="0" cellpadding="2" cellspacing="0" rowClasses="jsfcrud_odd_row,jsfcrud_even_row" rules="all" style="border:solid 1px">
-                        <h:column>
+                <h:outputText escape="false" value="#{bundle.ListCustomerEmpty}" rendered="#{customers.count == 0}"/>
+                <h:panelGroup rendered="#{customers.count > 0}">
+                    <p:dataTable
+                        value="#{customers.model}" var="item"
+                        paginator="true" rows="5"
+                        lazy="true"
+                        stickyHeader="true"
+                        filteredValue="#{customers.filteredItems}"
+                        widgetVar="customersTable"
+                        style="border:solid 1px">
+
+                        <f:facet name="header">
+                            <p:outputPanel>
+                                <h:outputText value="Search all fields:" />
+                                <h:inputText id="globalFilter" onkeyup="PF('customersTable').filter()" />
+                            </p:outputPanel>
+                        </f:facet>
+
+                        <!-- p:ajax/ -->
+                        <p:column filterBy="kuerzel" filterStyle="display:none;"
+                                  filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCustomerTitle_kuerzel}"/>
                             </f:facet>
                             <h:outputText value="#{item.kuerzel}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column filterBy="firmierung1" filterStyle="display:none;"
+                                  filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCustomerTitle_firmierung1}"/>
                             </f:facet>
                             <h:outputText value="#{item.firmierung1}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column filterBy="strasse" filterStyle="display:none;"
+                                  filterMatchMode="contains">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCustomerTitle_strasse}"/>
                             </f:facet>
                             <h:outputText value="#{item.strasse}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column filterBy="kundennummer" filterStyle="display:none;"
+                                  filterMatchMode="startsWith">
                             <f:facet name="header">
                                 <h:outputText value="#{bundle.ListCustomerTitle_kundennummer}"/>
                             </f:facet>
                             <h:outputText value="#{item.kundennummer}"/>
-                        </h:column>
-                        <h:column>
+                        </p:column>
+                        <p:column style="width:4%">
                             <f:facet name="header">
                                 <h:outputText value="&nbsp;"/>
                             </f:facet>
-                            <h:commandLink action="#{customerController.prepareView}" value="#{bundle.ListCustomerViewLink}"/>
-                        </h:column>
-                    </h:dataTable>
+                            <p:commandButton id="selectButton"
+                                             update=":form:display"
+                                             oncomplete="PF('itemDialog').show()"
+                                             icon="ui-icon-search" title="View">
+                                <f:setPropertyActionListener value="#{item}" target="#{customers.selectedCustomer}" />
+                            </p:commandButton>
+                        </p:column>
+                    </p:dataTable>
                 </h:panelGroup>
                 <br />
                 <br />
+
+                <p:dialog header="#{bundle.ViewCustomerTitle}"
+                          widgetVar="itemDialog" resizable="false"
+                          id="customerDlg" showEffect="fade"
+                          hideEffect="explode" modal="true">
+                    <h:panelGrid id="display" columns="2" cellpadding="4" style="margin:0 auto;">
+                        <h:outputText value="#{bundle.ViewCustomerLabel_id}"/>
+                        <h:outputText value="#{customers.selectedCustomer.id}" title="#{bundle.ViewCustomerTitle_id}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_kuerzel}"/>
+                        <h:outputText value="#{customers.selectedCustomer.kuerzel}" title="#{bundle.ViewCustomerTitle_kuerzel}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_firmierung1}"/>
+                        <h:outputText value="#{customers.selectedCustomer.firmierung1}" title="#{bundle.ViewCustomerTitle_firmierung1}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_firmierung2}"/>
+                        <h:outputText value="#{customers.selectedCustomer.firmierung2}" title="#{bundle.ViewCustomerTitle_firmierung2}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_strasse}"/>
+                        <h:outputText value="#{customers.selectedCustomer.strasse}" title="#{bundle.ViewCustomerTitle_strasse}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_plz}"/>
+                        <h:outputText value="#{customers.selectedCustomer.plz}" title="#{bundle.ViewCustomerTitle_plz}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_ort}"/>
+                        <h:outputText value="#{customers.selectedCustomer.ort}" title="#{bundle.ViewCustomerTitle_ort}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_kundennummer}"/>
+                        <h:outputText value="#{customers.selectedCustomer.kundennummer}" title="#{bundle.ViewCustomerTitle_kundennummer}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_telefon}"/>
+                        <h:outputText value="#{customers.selectedCustomer.telefon}" title="#{bundle.ViewCustomerTitle_telefon}"/>
+                        <h:outputText value="#{bundle.ViewCustomerLabel_durchwahl}"/>
+                        <h:outputText value="#{customers.selectedCustomer.durchwahl}" title="#{bundle.ViewCustomerTitle_durchwahl}"/>
+                    </h:panelGrid>
+                </p:dialog>
                 <h:link outcome="/index" value="#{bundle.ListCustomerIndexLink}"/>
             </h:form>
         </ui:define>
