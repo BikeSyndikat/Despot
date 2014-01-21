@@ -29,7 +29,7 @@
                 <h:panelGroup rendered="#{workorderController.items.rowCount > 0}">
                     <h:outputText value="#{workorderController.pagination.pageFirstItem + 1}..#{workorderController.pagination.pageLastItem + 1}/#{workorderController.pagination.itemsCount}"/>&nbsp;
                     <p:dataList value="#{workorderController.items}" var="item" type="inset" >
-                        <h:outputLink value="#workorder#{item.id}">
+                        <h:outputLink value="#workorder#{item.id}?transition=slidefade">
                             <p>
                                 <h:outputText value="#{bundle.ListWorkorderTitle_von}: " style="font-weight: bold;"/>
                                 <h:outputText value="#{item.von}"/>
@@ -87,7 +87,7 @@
                     </f:facet>
                 </pm:header>
                 <pm:content>
-                    <h:panelGrid columns="2">
+                    <p:panelGrid columns="2" >
                         <h:outputText value="#{bundle.ViewWorkorderLabel_id}"/>
                         <h:outputText value="#{item.id}" title="#{bundle.ViewWorkorderTitle_id}"/>
                         <h:outputText value="#{bundle.ViewWorkorderLabel_dat}"/>
@@ -124,7 +124,7 @@
                         <h:outputText value="#{item.kuerzel}" title="#{bundle.ViewWorkorderTitle_kuerzel}"/>
                         <h:outputText value="#{bundle.ViewWorkorderLabel_firmierung1}"/>
                         <h:outputText value="#{item.firmierung1}" title="#{bundle.ViewWorkorderTitle_firmierung1}"/>
-                    </h:panelGrid>
+                    </p:panelGrid>
                 </pm:content>
                 <pm:footer>
                     ${version.version}<br/>
