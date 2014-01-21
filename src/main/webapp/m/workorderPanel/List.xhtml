@@ -34,35 +34,7 @@
                     <p:dataList value="#{workorderController.items}" var="item">
                         <p:panel header="#{item.von} -> #{item.ueber} ->#{item.nach}"
                                  collapsed="#{!item.isUndispatched()}">
-                            <p>
-                                <h:outputText value="#{bundle.ListWorkorderTitle_von}: "
-                                              style="font-weight: bold;"/>
-                                <h:outputText value="#{item.von}"/>
-                                <h:outputText value="&nbsp;"/>
-
-                                <h:outputText value="#{bundle.ListWorkorderTitle_ueber}: "
-                                              style="font-weight: bold;"/>
-                                <h:outputText value="#{item.ueber}"/>
-                                <h:outputText value="&nbsp;"/>
-
-                                <h:outputText value="#{bundle.ListWorkorderTitle_nach}: "
-                                              style="font-weight: bold;"/>
-                                <h:outputText value="#{item.nach}"/>
-                            </p>
-                            <p>
-                                <h:outputText value="#{bundle.ListWorkorderTitle_uhr}: "
-                                              style="font-weight: bold;"/>
-                                <h:outputText value="#{item.uhr}"/>
-                                <h:outputText value="&nbsp;"/>
-
-                                <h:outputText value="#{bundle.ListWorkorderTitle_fahrernr}: "
-                                              style="font-weight: bold;"/>
-                                <h:outputText value="#{item.fahrernr}"/>
-                                <h:outputText value="&nbsp;"/>
-                                <h:outputText value="&nbsp;"/>
-                                <h:outputText value="&nbsp;"/>
-                            </p>
-                            <h:panelGrid columns="2" styleClass="ui-li-desc" >
+                            <p:panelGrid columns="2" styleClass="ui-li-desc" >
                                 <h:outputText style="font-weight: bold;"
                                               value="#{bundle.ViewWorkorderLabel_von}"/>
                                 <h:outputText value="#{item.von}" title="#{bundle.ViewWorkorderTitle_von}"/>
@@ -105,7 +77,7 @@
                                               value="#{bundle.ViewWorkorderLabel_fahrernr}"/>
                                 <h:outputText style="#{item.isUndispatched()?'background-color:#6EFF03;':''}"
                                               value="#{item.fahrernr}" title="#{bundle.ViewWorkorderTitle_fahrernr}"/>
-                            </h:panelGrid>
+                            </p:panelGrid>
                         </p:panel>
                     </p:dataList>
                     <h:form>
