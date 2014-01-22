@@ -27,13 +27,6 @@
                 <h:outputText escape="false" value="#{bundle.ListRiderEmpty}"
                               rendered="#{riderController.items.rowCount == 0}"/>
                 <h:panelGroup rendered="#{riderController.items.rowCount > 0}">
-                    <h:outputText value="#{riderController.pagination.pageFirstItem + 1}..#{riderController.pagination.pageLastItem + 1}/#{riderController.pagination.itemsCount}"/>&nbsp;
-                    <h:commandLink action="#{riderController.previous}"
-                                   value="#{bundle.Previous} #{riderController.pagination.pageSize}"
-                                   rendered="#{riderController.pagination.hasPreviousPage}"/>&nbsp;
-                    <h:commandLink action="#{riderController.next}"
-                                   value="#{bundle.Next} #{riderController.pagination.pageSize}"
-                                   rendered="#{riderController.pagination.hasNextPage}"/>&nbsp;
                     <p:dataTable id="riders"
                                  value="#{riderController.items}" var="item"
                                  editable="true"
