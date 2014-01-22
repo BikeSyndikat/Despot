@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<f:view xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:pm="http://primefaces.org/mobile"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core"
+        xmlns:c="http://java.sun.com/jsp/jstl/core"
+        contentType="text/html"
+        renderKitId="PRIMEFACES_MOBILE"
+        >
+    <pm:page title="Hello World">
+        <pm:view id="main">
+            <pm:header title="#{bundle.ListWorkorderTitle}">
+                <f:facet name="left">
+                    <p:button value="Back" icon="back" href="/"/>
+                </f:facet>
+                <f:facet name="right">
+                    <p:button value="Settings" icon="gear" href="#settings"/>
+                </f:facet>
+            </pm:header>
+            <pm:content>
+                <p:button href="/faces/m/workorder/List.xhtml"
+                          value="Views ${bundle.ViewWorkorderShowAllLink}"/>
+                <p:button href="/faces/m/workorderPanel/List.xhtml"
+                          value="Panels ${bundle.ViewWorkorderShowAllLink}"/>
+            </pm:content>
+            <pm:footer>
+                ${version.version} - ${version.timestamp}
+            </pm:footer>
+        </pm:view>
+        <pm:view id="settings">
+            <pm:header title="Settings">
+                <f:facet name="left">
+                    <p:button value="Back" icon="back" href="#main"/>
+                </f:facet>
+            </pm:header>
+            <pm:content>
+                <h:outputText value="#{loginBean.remoteUser}"/>
+                <br />
+                <p:button outcome="/logout" value="log out" rendered="#{loginBean.loggedIn}" />
+            </pm:content>
+            <pm:footer>
+                ${version.version} - ${version.timestamp}
+            </pm:footer>
+        </pm:view>
+        <pm:view id="autoComplete">
+            <pm:header title="AutoComplete">
+                <f:facet name="left"><p:button value="Back" icon="back" onclick="PrimeFaces.back()"/></f:facet>
+            </pm:header>
+
+            <pm:content>
+
+                <h:form>
+                    <p:growl id="growl" />
+
+                    <h3>Simple</h3>
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}"/>
+
+                    <h3>Min Length</h3>
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" minQueryLength="3" />
+
+                    <h3>Delay(2000)</h3>
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" queryDelay="2000" />
+
+                    <h3>Max Results(5)</h3>
+                    <p:autoComplete  completeMethod="#{autoCompleteBean.complete}" maxResults="5" />
+
+                    <h3>Basic Pojo</h3>
+                    <p:autoComplete  completeMethod="#{customers.completeCustomer}"
+                                     var="player" itemLabel="#{customers.model}" itemValue="#{customer}" converter="player">
+                        <p:ajax event="itemSelect" listener="#{customers.selectedCustomer}" update="growl" />
+                    </p:autoComplete>
+
+                </h:form>
+
+            </pm:content>
+        </pm:view>
+
+    </pm:page>
+</f:view>
