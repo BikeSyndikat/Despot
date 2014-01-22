@@ -47,7 +47,7 @@
         <dependency>
             <groupId>org.primefaces</groupId>
             <artifactId>primefaces-mobile</artifactId>
-            <version>0.9.4</version>
+            <version>1.0-SNAPSHOT</version>
         </dependency>
     </dependencies>
 
@@ -114,6 +114,12 @@
             <id>prime-repo</id>
             <name>PrimeFaces Maven Repository</name>
             <url>http://repository.primefaces.org</url>
+            <layout>default</layout>
+        </repository>
+        <repository>
+            <id>prime-github-repo</id>
+            <name>Unofficial PrimeFaces Maven Repository</name>
+            <url>http://primefaces.github.io/repository</url>
             <layout>default</layout>
         </repository>
     </repositories>
