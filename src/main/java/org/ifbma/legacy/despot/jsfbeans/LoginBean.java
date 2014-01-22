@@ -1,13 +1,13 @@
 package org.ifbma.legacy.despot.jsfbeans;
 
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
+import javax.inject.Named;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 
-@ManagedBean
+@Named
 @RequestScoped
 public class LoginBean {
 

@@ -3,13 +3,13 @@ package org.ifbma.legacy.despot.service;
 import java.text.DateFormat;
 import java.util.Date;
 import javax.ejb.Singleton;
-import javax.faces.bean.ManagedBean;
+import javax.inject.Named;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 
 @Path("System")
 @Singleton
-@ManagedBean
+@Named
 public class Version {
 
     private final String version = org.ifbma.legacy.despot.entities.Version.getVersion();

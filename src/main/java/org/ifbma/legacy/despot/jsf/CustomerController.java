@@ -4,8 +4,7 @@ import java.io.Serializable;
 import java.util.ResourceBundle;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
@@ -13,12 +12,13 @@ import javax.faces.convert.FacesConverter;
 import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
+import javax.inject.Named;
 import org.ifbma.legacy.despot.entities.Customer;
 import org.ifbma.legacy.despot.jsf.util.JsfUtil;
 import org.ifbma.legacy.despot.jsf.util.PaginationHelper;
 import org.ifbma.legacy.despot.jsfbeans.CustomerFacade;
 
-@ManagedBean(name = "customerController")
+@Named(value = "customerController")
 @SessionScoped
 public class CustomerController implements Serializable {
 

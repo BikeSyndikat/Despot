@@ -3,9 +3,9 @@ package org.ifbma.legacy.despot.jsfbeans;
 import java.io.Serializable;
 import java.util.*;
 import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.SessionScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
+import javax.inject.Named;
 import org.ifbma.legacy.despot.entities.Customer;
 
 /**
@@ -14,7 +14,7 @@ import org.ifbma.legacy.despot.entities.Customer;
  * <p/>
  * @author norbert
  */
-@ManagedBean(name = "customers")
+@Named("customers")
 @SessionScoped
 public class CustomerPfBean implements Serializable {
 
