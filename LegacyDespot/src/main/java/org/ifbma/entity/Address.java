@@ -35,7 +35,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Address.findByCountry",
             query = "SELECT a FROM Address a WHERE a.country = :country"),
     @NamedQuery(name = "Address.findByCity",
-            query = "SELECT a FROM Address a WHERE a.city = :city")
+            query = "SELECT a FROM Address a WHERE a.city = :city"),
+    @NamedQuery(name = "Addres.search",
+            query = "select a from address a where a.fullTextRepresentation LIKE :fullTextRepresentation")
 })
 public class Address extends ShortableElement implements Serializable {
 
@@ -70,6 +72,8 @@ public class Address extends ShortableElement implements Serializable {
     private Collection<Consignment> consignmentCollection1;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "address")
     private Collection<Customer> customerCollection;
+    @Column(name = "full_text_representation")
+    private String fullTextRepresentation;
 
     public Address() {
     }
@@ -189,6 +193,15 @@ public class Address extends ShortableElement implements Serializable {
 
     public void setCustomerCollection(Collection<Customer> customerCollection) {
         this.customerCollection = customerCollection;
+    }
+
+    @XmlTransient
+    public String getFullTextRepresentation() {
+        return fullTextRepresentation;
+    }
+
+    public void setFullTextRepresentation(String fullTextRepresentation) {
+        this.fullTextRepresentation = fullTextRepresentation;
     }
 
     @Override
