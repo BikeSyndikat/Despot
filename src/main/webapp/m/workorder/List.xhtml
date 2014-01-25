@@ -76,7 +76,7 @@
             </pm:footer>
         </pm:view>
 
-        <c:forEach items="#{workorderController.itemsAsList}" var="item" >
+        <ui:repeat value="#{workorderController.itemsAsList}" var="item">
             <pm:view id="workorder#{item.id}">
                 <pm:header title="Tour #{item.id}">
                     <f:facet name="left">
@@ -131,7 +131,7 @@
                     ${version.timestamp}
                 </pm:footer>
             </pm:view>
-        </c:forEach>
+        </ui:repeat>
 
         <pm:view id="settings">
             <pm:header title="Settings">
