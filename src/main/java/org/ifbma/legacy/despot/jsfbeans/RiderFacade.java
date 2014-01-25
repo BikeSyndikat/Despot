@@ -3,10 +3,10 @@ package org.ifbma.legacy.despot.jsfbeans;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import org.ifbma.legacy.despot.entities.Rider;
+import org.ifbma.legacy.despot.entities.LegacyRider;
 
 @Stateless
-public class RiderFacade extends AbstractFacade<Rider> {
+public class RiderFacade extends AbstractFacade<LegacyRider> {
 
     @PersistenceContext(unitName = "LegacyDespot_1_PU")
     private EntityManager em;
@@ -17,7 +17,7 @@ public class RiderFacade extends AbstractFacade<Rider> {
     }
 
     public RiderFacade() {
-        super(Rider.class);
+        super(LegacyRider.class);
     }
 
 }

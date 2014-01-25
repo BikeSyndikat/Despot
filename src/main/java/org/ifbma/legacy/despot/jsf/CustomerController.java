@@ -13,7 +13,7 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
-import org.ifbma.legacy.despot.entities.Customer;
+import org.ifbma.legacy.despot.entities.LegacyCustomer;
 import org.ifbma.legacy.despot.jsf.util.JsfUtil;
 import org.ifbma.legacy.despot.jsf.util.PaginationHelper;
 import org.ifbma.legacy.despot.jsfbeans.CustomerFacade;
@@ -24,7 +24,7 @@ public class CustomerController implements Serializable {
 
     static int PAGE_SIZE = 10;
 
-    private Customer current;
+    private LegacyCustomer current;
     private DataModel items = null;
     @EJB
     CustomerFacade ejbFacade;
@@ -43,9 +43,9 @@ public class CustomerController implements Serializable {
         }
     }
 
-    public Customer getSelected() {
+    public LegacyCustomer getSelected() {
         if (current == null) {
-            current = new Customer();
+            current = new LegacyCustomer();
             selectedItemIndex = -1;
         }
         return current;
@@ -80,13 +80,13 @@ public class CustomerController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Customer) getItems().getRowData();
+        current = (LegacyCustomer) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Customer();
+        current = new LegacyCustomer();
         selectedItemIndex = -1;
         return "Create";
     }
@@ -103,7 +103,7 @@ public class CustomerController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Customer) getItems().getRowData();
+        current = (LegacyCustomer) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -120,7 +120,7 @@ public class CustomerController implements Serializable {
     }
 
     public String destroy() {
-        current = (Customer) getItems().getRowData();
+        current = (LegacyCustomer) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -201,7 +201,7 @@ public class CustomerController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Customer.class)
+    @FacesConverter(forClass = LegacyCustomer.class)
     public static class CustomerControllerConverter implements Converter {
 
         @Override
@@ -231,13 +231,13 @@ public class CustomerController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Customer) {
-                Customer o = (Customer) object;
+            if (object instanceof LegacyCustomer) {
+                LegacyCustomer o = (LegacyCustomer) object;
                 return getStringKey(o.getId());
             } else {
                 throw new IllegalArgumentException("object " + object
                         + " is of type " + object.getClass().getName()
-                        + "; expected type: " + Customer.class.getName());
+                        + "; expected type: " + LegacyCustomer.class.getName());
             }
         }
 

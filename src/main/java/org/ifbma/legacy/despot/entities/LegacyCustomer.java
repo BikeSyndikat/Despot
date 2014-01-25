@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Customer.findByKundennummer", query = "SELECT c FROM Customer c WHERE c.kundennummer = :kundennummer"),
     @NamedQuery(name = "Customer.findByTelefon", query = "SELECT c FROM Customer c WHERE c.telefon = :telefon"),
     @NamedQuery(name = "Customer.findByDurchwahl", query = "SELECT c FROM Customer c WHERE c.durchwahl = :durchwahl")})
-public class Customer implements Serializable {
+public class LegacyCustomer implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,7 +52,7 @@ public class Customer implements Serializable {
     @Column(length = 254)
     private String durchwahl;
 
-    public Customer() {
+    public LegacyCustomer() {
     }
 
     public Integer getId() {

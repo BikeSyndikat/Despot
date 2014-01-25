@@ -5,12 +5,12 @@ import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.inject.Named;
-import org.ifbma.legacy.despot.entities.Customer;
+import org.ifbma.legacy.despot.entities.LegacyCustomer;
 import org.primefaces.model.LazyDataModel;
 import org.primefaces.model.SortOrder;
 
 @Named(value = "lazyCustomerModel")
-public class LazyCustomerModel extends LazyDataModel<Customer> {
+public class LazyCustomerModel extends LazyDataModel<LegacyCustomer> {
 
     private static final Logger LOG = Logger.getLogger(LazyCustomerModel.class.getName());
 
@@ -27,20 +27,20 @@ public class LazyCustomerModel extends LazyDataModel<Customer> {
     }
 
     @Override
-    public Customer getRowData(String rowKey) {
+    public LegacyCustomer getRowData(String rowKey) {
         return datasource.find(Integer.parseInt(rowKey));
     }
 
     @Override
-    public Object getRowKey(Customer entity) {
+    public Object getRowKey(LegacyCustomer entity) {
         return entity.getId();
     }
 
     @Override
-    public List<Customer> load(int first, int pageSize, String sortField,
+    public List<LegacyCustomer> load(int first, int pageSize, String sortField,
             SortOrder sortOrder, Map<String, String> filters) {
 
-        List<Customer> data = datasource.findRange(
+        List<LegacyCustomer> data = datasource.findRange(
                 new int[]{first, first + pageSize}, sortField, sortOrder,
                 getExplodedFilters(filters));
 

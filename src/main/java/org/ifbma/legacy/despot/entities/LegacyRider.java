@@ -17,7 +17,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Rider.findByLetztetour", query = "SELECT r FROM Rider r WHERE r.letztetour = :letztetour"),
     @NamedQuery(name = "Rider.findByFullName", query = "SELECT r FROM Rider r WHERE r.fullName = :fullName"),
     @NamedQuery(name = "Rider.findByStatus", query = "SELECT r FROM Rider r WHERE r.status = :status")})
-public class Rider implements Serializable {
+public class LegacyRider implements Serializable {
 
     private static final long serialVersionUID = 2L;
 
@@ -51,14 +51,14 @@ public class Rider implements Serializable {
     @NotNull
     private int status;
 
-    public Rider() {
+    public LegacyRider() {
     }
 
-    public Rider(Integer id) {
+    public LegacyRider(Integer id) {
         this.id = id;
     }
 
-    public Rider(Integer id, int riderNumber, int anzahltouren, String fullName, int status) {
+    public LegacyRider(Integer id, int riderNumber, int anzahltouren, String fullName, int status) {
         this.id = id;
         this.riderNumber = riderNumber;
         this.anzahltouren = anzahltouren;
@@ -124,10 +124,10 @@ public class Rider implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Rider)) {
+        if (!(object instanceof LegacyRider)) {
             return false;
         }
-        Rider other = (Rider) object;
+        LegacyRider other = (LegacyRider) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

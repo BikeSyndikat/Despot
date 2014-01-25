@@ -6,7 +6,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.SessionScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
-import org.ifbma.legacy.despot.entities.Customer;
+import org.ifbma.legacy.despot.entities.LegacyCustomer;
 
 /**
  * Jsf bean for primefaces. Uses its own lazy data model and paging and does
@@ -23,17 +23,17 @@ public class CustomerPfBean implements Serializable {
     @Inject
     LazyCustomerModel model;
 
-    private List<Customer> filteredItems = null;
-    private Customer selectedCustomer = null;
+    private List<LegacyCustomer> filteredItems = null;
+    private LegacyCustomer selectedCustomer = null;
 
     public CustomerPfBean() {
     }
 
-    public List<Customer> getFilteredItems() {
+    public List<LegacyCustomer> getFilteredItems() {
         return filteredItems;
     }
 
-    public void setFilteredItems(List<Customer> filteredItems) {
+    public void setFilteredItems(List<LegacyCustomer> filteredItems) {
         this.filteredItems = filteredItems;
     }
 
@@ -53,11 +53,11 @@ public class CustomerPfBean implements Serializable {
         }
     }
 
-    public Customer getSelectedCustomer() {
+    public LegacyCustomer getSelectedCustomer() {
         return selectedCustomer;
     }
 
-    public void setSelectedCustomer(Customer selectedCustomer) {
+    public void setSelectedCustomer(LegacyCustomer selectedCustomer) {
         this.selectedCustomer = selectedCustomer;
     }
 

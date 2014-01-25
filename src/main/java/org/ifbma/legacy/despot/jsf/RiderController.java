@@ -13,7 +13,7 @@ import javax.faces.model.DataModel;
 import javax.faces.model.ListDataModel;
 import javax.faces.model.SelectItem;
 import javax.inject.Named;
-import org.ifbma.legacy.despot.entities.Rider;
+import org.ifbma.legacy.despot.entities.LegacyRider;
 import org.ifbma.legacy.despot.jsf.util.JsfUtil;
 import org.ifbma.legacy.despot.jsf.util.PaginationHelper;
 import org.ifbma.legacy.despot.jsfbeans.RiderFacade;
@@ -23,7 +23,7 @@ import org.primefaces.event.CellEditEvent;
 @SessionScoped
 public class RiderController implements Serializable {
 
-    private Rider current;
+    private LegacyRider current;
     private DataModel items = null;
     @EJB
     RiderFacade ejbFacade;
@@ -33,9 +33,9 @@ public class RiderController implements Serializable {
     public RiderController() {
     }
 
-    public Rider getSelected() {
+    public LegacyRider getSelected() {
         if (current == null) {
-            current = new Rider();
+            current = new LegacyRider();
             selectedItemIndex = -1;
         }
         return current;
@@ -70,13 +70,13 @@ public class RiderController implements Serializable {
     }
 
     public String prepareView() {
-        current = (Rider) getItems().getRowData();
+        current = (LegacyRider) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "View";
     }
 
     public String prepareCreate() {
-        current = new Rider();
+        current = new LegacyRider();
         selectedItemIndex = -1;
         recreateModel();
         return "Create";
@@ -96,7 +96,7 @@ public class RiderController implements Serializable {
     }
 
     public String prepareEdit() {
-        current = (Rider) getItems().getRowData();
+        current = (LegacyRider) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         return "Edit";
     }
@@ -115,7 +115,7 @@ public class RiderController implements Serializable {
     }
 
     public String destroy() {
-        current = (Rider) getItems().getRowData();
+        current = (LegacyRider) getItems().getRowData();
         selectedItemIndex = pagination.getPageFirstItem() + getItems().getRowIndex();
         performDestroy();
         recreatePagination();
@@ -209,7 +209,7 @@ public class RiderController implements Serializable {
         return JsfUtil.getSelectItems(ejbFacade.findAll(), true);
     }
 
-    @FacesConverter(forClass = Rider.class)
+    @FacesConverter(forClass = LegacyRider.class)
     public static class RiderControllerConverter implements Converter {
 
         @Override
@@ -240,13 +240,13 @@ public class RiderController implements Serializable {
             if (object == null) {
                 return null;
             }
-            if (object instanceof Rider) {
-                Rider o = (Rider) object;
+            if (object instanceof LegacyRider) {
+                LegacyRider o = (LegacyRider) object;
                 return getStringKey(o.getId());
             } else {
                 throw new IllegalArgumentException("object " + object
                         + " is of type " + object.getClass().getName()
-                        + "; expected type: " + Rider.class.getName());
+                        + "; expected type: " + LegacyRider.class.getName());
             }
         }
 

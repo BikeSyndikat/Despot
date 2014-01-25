@@ -5,11 +5,11 @@ import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.*;
 import javax.persistence.criteria.*;
-import org.ifbma.legacy.despot.entities.Customer;
+import org.ifbma.legacy.despot.entities.LegacyCustomer;
 import org.primefaces.model.SortOrder;
 
 @Stateless
-public class CustomerFacade extends AbstractFacade<Customer> {
+public class CustomerFacade extends AbstractFacade<LegacyCustomer> {
 
     @PersistenceContext(unitName = "LegacyDespot_1_PU")
     private EntityManager em;
@@ -20,7 +20,7 @@ public class CustomerFacade extends AbstractFacade<Customer> {
     }
 
     public CustomerFacade() {
-        super(Customer.class);
+        super(LegacyCustomer.class);
     }
 
     /**
@@ -32,7 +32,7 @@ public class CustomerFacade extends AbstractFacade<Customer> {
     public int count(Map<String, String> filters) {
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
         CriteriaQuery cq = cb.createQuery();
-        Root<Customer> rt = cq.from(entityClass);
+        Root<LegacyCustomer> rt = cq.from(entityClass);
         if (filters != null && filters.size() > 0) {
             Expression p = getFilterCondition(cb, rt, filters);
             if (p != null) {
@@ -55,13 +55,13 @@ public class CustomerFacade extends AbstractFacade<Customer> {
      * @param filters
      * @return
      */
-    public List<Customer> findRange(int[] range, String sortField,
+    public List<LegacyCustomer> findRange(int[] range, String sortField,
             final SortOrder sortOrder, Map<String, String> filters) {
 
         CriteriaBuilder cb = getEntityManager().getCriteriaBuilder();
 
         CriteriaQuery cq = cb.createQuery();
-        final Root<Customer> rootQuery = cq.from(entityClass);
+        final Root<LegacyCustomer> rootQuery = cq.from(entityClass);
 
         cq.select(rootQuery);
         if (sortField != null) {
@@ -93,7 +93,7 @@ public class CustomerFacade extends AbstractFacade<Customer> {
      * @return
      */
     protected Order getSortExpression(final SortOrder sortOrder,
-            CriteriaBuilder cb, final Root<Customer> rootQuery, String sortField) {
+            CriteriaBuilder cb, final Root<LegacyCustomer> rootQuery, String sortField) {
 
         final Order sortExpression;
         if (sortOrder.equals(SortOrder.ASCENDING)) {
@@ -113,7 +113,7 @@ public class CustomerFacade extends AbstractFacade<Customer> {
      * @param filters
      * @return
      */
-    protected Expression getFilterCondition(CriteriaBuilder cb, Root<Customer> myObj, Map<String, String> filters) {
+    protected Expression getFilterCondition(CriteriaBuilder cb, Root<LegacyCustomer> myObj, Map<String, String> filters) {
         Expression<Boolean> filterCondition = null;
         final String WILDCARD = "%";
 
