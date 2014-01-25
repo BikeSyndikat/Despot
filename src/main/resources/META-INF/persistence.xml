@@ -6,9 +6,29 @@
         <jta-data-source>jdbc/legacyDispo</jta-data-source>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
-            <!--            <property name="eclipselink.logging.logger" value="ServerLogger"/>
+            <property name="eclipselink.logging.logger" value="ServerLogger"/>
             <property name="eclipselink.logging.level.sql" value="FINE"/>
-            <property name="eclipselink.logging.parameters" value="true"/>-->
+            <property name="eclipselink.logging.parameters" value="true"/>
+        </properties>
+    </persistence-unit>
+    <persistence-unit name="Despot_1_PU" transaction-type="JTA">
+        <jta-data-source>jdbc/despot</jta-data-source>
+        <class>org.ifbma.entity.Address</class>
+        <class>org.ifbma.entity.Bill</class>
+        <class>org.ifbma.entity.Billrun</class>
+        <class>org.ifbma.entity.Consignment</class>
+        <class>org.ifbma.entity.ConsignmentStatus</class>
+        <class>org.ifbma.entity.Customer</class>
+        <class>org.ifbma.entity.DueBillsDetailed</class>
+        <class>org.ifbma.entity.DueBillsSummed</class>
+        <class>org.ifbma.entity.Property</class>
+        <class>org.ifbma.entity.Rider</class>
+        <exclude-unlisted-classes>true</exclude-unlisted-classes>
+        <properties>
+            <property name="openjpa.jdbc.SynchronizeMappings" value="buildSchema(ForeignKeys=true)"/>
+            <!--            <property name="openjpa.Log" value="SQL=TRACE"/>
+            <property name="openjpa.ConnectionFactoryProperties"
+            value="PrettyPrint=true, PrettyPrintLineLength=72, PrintParameters=True"/>-->
         </properties>
     </persistence-unit>
 </persistence>
