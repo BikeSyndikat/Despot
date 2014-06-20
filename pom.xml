@@ -6,6 +6,7 @@
         <groupId>org.ifbma</groupId>
         <artifactId>ee7-parent-pom</artifactId>
         <version>1.0.5-SNAPSHOT</version>
+        <relativePath />
     </parent>
 
     <groupId>org.ifbma.legacy</groupId>
@@ -69,43 +70,18 @@
                 </executions>
             </plugin>
             <!--            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
+                <groupId>de.struller-baumann</groupId>
+                <artifactId>visualee</artifactId>
+                <version>0.26</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
-                    <compilerArguments>
-                        <endorseddirs>${endorsed.dir}</endorseddirs>
-                    </compilerArguments>
+                    <outputdirectory>visualee</outputdirectory>
                 </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-war-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-dependency-plugin</artifactId>
-                <version>2.1</version>
                 <executions>
                     <execution>
-                        <phase>validate</phase>
+                        <phase>process-resources</phase>
                         <goals>
-                            <goal>copy</goal>
+                            <goal>visualize</goal>
                         </goals>
-                        <configuration>
-                            <outputDirectory>${endorsed.dir}</outputDirectory>
-                            <silent>true</silent>
-                            <artifactItems>
-                                <artifactItem>
-                                    <groupId>javax</groupId>
-                                    <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>7.0</version>
-                                    <type>jar</type>
-                                </artifactItem>
-                            </artifactItems>
-                        </configuration>
                     </execution>
                 </executions>
             </plugin>-->
