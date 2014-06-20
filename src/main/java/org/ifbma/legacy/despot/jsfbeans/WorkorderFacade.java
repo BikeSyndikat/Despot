@@ -24,7 +24,7 @@ public class WorkorderFacade extends AbstractFacade<Workorder> {
 
     @PostConstruct
     public void initialize() {
-        em.setProperty("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS.name());
+//        em.setProperty("javax.persistence.cache.retrieveMode", CacheRetrieveMode.BYPASS.name());
         LOG.info("set retrieveMode to " + CacheRetrieveMode.BYPASS.name());
     }
 
@@ -40,13 +40,13 @@ public class WorkorderFacade extends AbstractFacade<Workorder> {
      */
     @Override
     public List<Workorder> findRange(int[] range) {
-        evictCache();
+//        evictCache();
         CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
         cq.select(cq.from(entityClass));
         Query q = getEntityManager().createQuery(cq);
         q.setMaxResults(range[1] - range[0] + 1);
         q.setFirstResult(range[0]);
-        q.setHint("javax.persistence.cache.retrieveMode", CacheStoreMode.BYPASS.name());
+//        q.setHint("javax.persistence.cache.retrieveMode", CacheStoreMode.BYPASS.name());
         return q.getResultList();
     }
 
