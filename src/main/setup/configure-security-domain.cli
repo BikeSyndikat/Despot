@@ -1,0 +1,32 @@
+# Use for wildfly and PostgreSQL.
+# Use after setup.sql
+
+batch
+
+/subsystem=datasources/data-source=AppDS:add( \
+ driver-name=postgresql, \
+ user-name=wildfly, \
+ password="Gif2Quejasht", \
+ connection-url=jdbc:postgresql://localhost:5432/wildfly, \
+ min-pool-size=5, \
+ max-pool-size=15, \
+ jndi-name="java:jboss/datasources/AppDS", \
+ enabled=true \
+)
+
+# Configure the security domain
+/subsystem=security/security-domain=app/:add(cache-type=default)
+/subsystem=security/security-domain=app/authentication=classic:add( \
+ login-modules=[{ \
+  "code"=>"Database", "flag"=>"required", \
+  "module-options"=>[\
+   ("dsJndiName"=>"java:jboss/datasources/AppDS"), \
+   ("principalsQuery"=>"SELECT password FROM users WHERE username = ?"), \
+   ("rolesQuery"=>"SELECT r.name, 'Roles' FROM users_roles ur INNER JOIN roles r ON r.id = ur.role_id INNER JOIN users u ON u.id = ur.user_id WHERE u.username = ?")\
+ ]}])
+
+# Run the batch commands
+run-batch
+
+# Reload the server configuration
+:reload

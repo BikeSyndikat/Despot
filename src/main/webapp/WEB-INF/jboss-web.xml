@@ -4,5 +4,5 @@
            xsi:schemaLocation="http://www.jboss.com/xml/ns/javaee
 http://www.jboss.org/schema/jbossas/jboss-web_8_0.xsd">
     <context-root>/LegacyDespot</context-root>
-    <!--    <security-domain>app</security-domain>-->
+    <security-domain>app</security-domain>
 </jboss-web>
