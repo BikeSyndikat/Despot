@@ -4,8 +4,8 @@
 
     <parent>
         <groupId>org.ifbma</groupId>
-        <artifactId>ee6-parent-pom</artifactId>
-        <version>1.0.3</version>
+        <artifactId>ee7-parent-pom</artifactId>
+        <version>1.0.5-SNAPSHOT</version>
     </parent>
 
     <groupId>org.ifbma.legacy</groupId>
@@ -21,11 +21,14 @@
     <name>LegacyDespot</name>
     <ciManagement>
         <system>hudson</system>
-        <url>https://dev.ifbma.org:8181/jenkins/job/LegacyDespot/</url>
+        <url>https://dev.ifbma.org:8443/jenkins/job/LegacyDespot/</url>
     </ciManagement>
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.7</maven.compiler.source>
+        <maven.compiler.target>1.7</maven.compiler.target>
+        <failOnMissingWebXml>false</failOnMissingWebXml>
     </properties>
 
     <scm>
@@ -65,13 +68,13 @@
                     </execution>
                 </executions>
             </plugin>
-            <plugin>
+            <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>2.3.2</version>
                 <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
+                    <source>1.7</source>
+                    <target>1.7</target>
                     <compilerArguments>
                         <endorseddirs>${endorsed.dir}</endorseddirs>
                     </compilerArguments>
@@ -98,14 +101,14 @@
                                 <artifactItem>
                                     <groupId>javax</groupId>
                                     <artifactId>javaee-endorsed-api</artifactId>
-                                    <version>6.0</version>
+                                    <version>7.0</version>
                                     <type>jar</type>
                                 </artifactItem>
                             </artifactItems>
                         </configuration>
                     </execution>
                 </executions>
-            </plugin>
+            </plugin>-->
         </plugins>
     </build>
 
