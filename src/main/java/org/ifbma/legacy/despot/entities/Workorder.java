@@ -1,7 +1,7 @@
 package org.ifbma.legacy.despot.entities;
 
 import java.io.Serializable;
-import java.math.BigInteger;
+import java.math.BigDecimal;
 import javax.persistence.*;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Workorder.findByKuerzel", query = "SELECT w FROM Workorder w WHERE w.kuerzel = :kuerzel"),
     @NamedQuery(name = "Workorder.findByFirmierung1", query = "SELECT w FROM Workorder w WHERE w.firmierung1 = :firmierung1")})
 public class Workorder implements Serializable {
+
     private static final long serialVersionUID = 1L;
     @Id
 //    @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -54,7 +55,7 @@ public class Workorder implements Serializable {
     @Size(max = 50)
     @Column(length = 50)
     private String fahrschecknr;
-    private BigInteger preis;
+    private BigDecimal preis;
     private Integer fahrernr;
     @Size(max = 50)
     @Column(length = 50)
@@ -66,7 +67,7 @@ public class Workorder implements Serializable {
     @Column(length = 50)
     private String fahrscheckcheck;
     private Integer sonderkonditionen;
-    private BigInteger summe;
+    private BigDecimal summe;
     private String kuerzel;
     @Size(max = 254)
     @Column(length = 254)
@@ -142,11 +143,11 @@ public class Workorder implements Serializable {
         this.fahrschecknr = fahrschecknr;
     }
 
-    public BigInteger getPreis() {
+    public BigDecimal getPreis() {
         return preis;
     }
 
-    public void setPreis(BigInteger preis) {
+    public void setPreis(BigDecimal preis) {
         this.preis = preis;
     }
 
@@ -190,11 +191,11 @@ public class Workorder implements Serializable {
         this.sonderkonditionen = sonderkonditionen;
     }
 
-    public BigInteger getSumme() {
+    public BigDecimal getSumme() {
         return summe;
     }
 
-    public void setSumme(BigInteger summe) {
+    public void setSumme(BigDecimal summe) {
         this.summe = summe;
     }
 
