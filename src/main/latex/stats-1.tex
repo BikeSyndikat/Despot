@@ -1,0 +1,88 @@
+% Title:  stats-1
+%
+% $Id: stats-1.tex,v 1.2 2005/07/18 12:15:07 norbert Exp $
+% Original Author:	Norbert Elbrecht norbert@die-niedlichen.de
+% Created:		Mon Aug 16 14:04:22 CEST 2004
+% This is the first fragment of a tex template.
+
+\documentclass[headinclude]{scrartcl}
+%Note the umlaut package breaks the pdfauthor etc. umlauts.
+\usepackage{scrtime,scrpage2,ngerman,ifpdf}
+%\usepackage{umlaut} 
+\usepackage[ansinew]{inputenc}
+
+\newif\ifpdf
+\ifx\pdfoutput\undefined
+    \pdffalse           % we are not running PDFLaTeX
+\else
+    \pdfoutput=1        % we are running PDFLaTeX
+    \pdftrue
+\fi
+%----------------------------------------------------------------------
+\ifpdf
+    \usepackage[pdftex,
+        colorlinks=true,
+        urlcolor=rltblue,               % \href{...}{...}
+        anchorcolor=rltbrightblue,
+        filecolor=rltgreen,             % \href*{...}
+        linkcolor=rltred,               % \ref{...} and \pageref{...}
+        menucolor=webdarkblue,
+        citecolor=webbrightgreen,
+        pdftitle={Umsatzstatistik nach Kunden},
+        pdfauthor={Norbert Elbrecht},
+        pdfsubject={},
+        pdfkeywords={},
+        pdfstartview=FitH,
+%        pdfadjustspacing=1,
+        pagebackref,
+        pdfpagemode=None,
+        bookmarksopen=true]{hyperref}
+    \pdfcompresslevel=9
+%    \usepackage[pdftex]{graphicx}
+%    \usepackage{thumbpdf}
+\else
+    \usepackage[
+        colorlinks=true,
+        urlcolor=rltblue,               % \href{...}{...}
+        anchorcolor=rltbrightblue,
+        filecolor=rltgreen,             % \href*{...}
+        linkcolor=rltred,               % \ref{...} and \pageref{...}
+        menucolor=webdarkblue,
+        citecolor=webbrightgreen]{hyperref}
+    \usepackage{graphicx}
+\fi
+
+\usepackage{color}
+\definecolor{rltbrightred}{rgb}{1,0,0}
+\definecolor{rltred}{rgb}{0.75,0,0}
+\definecolor{rltdarkred}{rgb}{0.5,0,0}
+%
+\definecolor{rltbrightgreen}{rgb}{0,0.75,0}
+\definecolor{rltgreen}{rgb}{0,0.5,0}
+\definecolor{rltdarkgreen}{rgb}{0,0,0.25}
+%
+\definecolor{rltbrightblue}{rgb}{0,0,1}
+\definecolor{rltblue}{rgb}{0,0,0.75}
+\definecolor{rltdarkblue}{rgb}{0,0,0.5}
+
+\definecolor{webred}{rgb}{0.5,.25,0}
+\definecolor{webblue}{rgb}{0,0,0.75}
+\definecolor{webgreen}{rgb}{0,0.5,0}
+
+% Some useful definitions...
+\typearea{12} %12
+\deftripstyle{nestyle}[0.1pt]
+{}{\pagename: \pagemark}{\scriptsize Version vom \today, \thistime}
+{}{}{}
+\pagestyle{nestyle}
+\pagenumbering{arabic}
+%\pagefooter{}
+
+\begin{document}\label{begin}
+
+% In PDF mode this will use   "myLogo.jpg"
+% In LaTeX mode this will use "myLogo.eps"
+%\includegraphics[width=3in]{myLogo}
+
+\section*{Statistik}
+
