@@ -6,10 +6,9 @@
 % This is the first fragment of a tex template.
 
 \documentclass[headinclude]{scrartcl}
-%Note the umlaut package breaks the pdfauthor etc. umlauts.
-\usepackage{scrtime,scrpage2,ngerman,ifpdf}
-%\usepackage{umlaut} 
-\usepackage[ansinew]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{scrtime,scrpage2,ngerman,eurosym,ifpdf}
 
 \newif\ifpdf
 \ifx\pdfoutput\undefined
