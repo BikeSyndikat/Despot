@@ -1,0 +1,74 @@
+\documentclass[fontsize=12pt,parskip]{scrlttr2}
+%\usepackage{compi-lux}
+\usepackage[T1]{fontenc}
+\usepackage[utf8x]{inputenc}
+\usepackage{ngerman,eurosym}
+%\date{16.~Februar~2011}
+\KOMAoptions{parskip=half}
+
+\setkomavar{fromname}{BikeSyndikat GbR}
+\setkomavar{fromaddress}{50\,670 K\"oln\\ Engelbertstr~41}
+\setkomavar{fromphone}{0221/95\,XX\,XX}
+\setkomavar{backaddress}{BikeSyndikat, Engelbertstr.~41, 50670 K\"oln}
+\setkomavar{place}{K\"oln} \setkomavar{signature}{ }
+\setkomavar{frombank}{Konto DE00\,111\,11\,111\,000\,00\,000, 
+                      Bank K\"oln}
+%\setkomavar{location}{heir}
+
+%\newcounter{nextpage}
+%% \setkomavar{firsthead}{\newlength{\adrbreite}\newlength{\linbreite}\ignorespaces
+%%            \settowidth{\adrbreite}{\shortstack[l]{\usekomavar{fromaddress}}}
+%%            \ignorespaces
+%%            \setlength{\linbreite}{\textwidth}\ignorespaces
+%%            \advance\linbreite by -\adrbreite
+%%            \parbox[t]{\linbreite}{
+%%              {\normalfont\scshape\usekomavar{fromname}}\\[-0.7\baselineskip]
+%%                    \advance\linbreite by -1em
+%%                    \rule{\linbreite}{.4pt}}\ignorespaces
+%%            \parbox[t]{\adrbreite}{\usekomavar{fromaddress}}\ignorespaces
+%%            }
+
+%% \setkomavar{firstfoot}{\setcounter{nextpage}{\value{page}}
+%%            \stepcounter{nextpage}
+%%            \hfill -- \arabic{nextpage} --}
+%% \setkomavar{nextfoot}{\setcounter{nextpage}{\value{page}}
+%%            \stepcounter{nextpage}
+%%            \hfill -- \arabic{nextpage} --}
+
+\newlength{\adrbreite}\newlength{\linbreite}\ignorespaces
+\setkomavar{firsthead}{\settowidth{\adrbreite}{\shortstack[l]{\usekomavar
+      {fromaddress}\\\usekomavar{fromphone}}} \ignorespaces
+  \setlength{\linbreite}{\textwidth}\ignorespaces \advance\linbreite by
+  -\adrbreite \advance\linbreite by -3pt
+  \parbox[t]{\linbreite}{
+    {\normalfont\scshape\usekomavar{fromname}}\\[-0.7\baselineskip]
+    \advance\linbreite by -1em
+    \rule{\linbreite}{.4pt}}\ignorespaces
+  \parbox[t]{\adrbreite}{\usekomavar
+    {fromaddress}\\\usekomavar{fromphone}}\ignorespaces
+}
+
+\setkomavar{nexthead}{\parbox[t]{\textwidth}{von: \usekomavar{fromname},
+    \today\hfill \pagename\ \thepage\hfill\hfill\\[-0.7\baselineskip]
+    \rule{\textwidth}{.2pt}}\ignorespaces }
+
+\setkomavar{firstfoot}{\parbox[b]{\linewidth}{\centering\def\\{,
+    }\usekomavar{frombank}}}
+
+%\pagestyle{headings}
+
+\begin{document}
+
+\begin{letter}{\ }
+  \opening{\ }
+  \setkomavar{title}{Rechnung Nr.~\jobname}
+
+  Lorem ipsum.
+
+\end{letter}
+\end{document}
+% Local Variables:
+% mode: LaTeX
+% compile-command:"pdflatex bill"
+% eval:(local-set-key "\C-j" 'compile)
+% End:
