@@ -1,4 +1,5 @@
-\documentclass[fontsize=12pt,parskip]{scrlttr2}
+\documentclass[fontsize=12pt,fromalign=right,fromrule=aftername,
+  parskip,fromphone=true]{scrlttr2}
 %\usepackage{compi-lux}
 \usepackage[T1]{fontenc}
 \usepackage[utf8x]{inputenc}
@@ -8,12 +9,15 @@
 
 \setkomavar{fromname}{BikeSyndikat GbR}
 \setkomavar{fromaddress}{50\,670 K\"oln\\ Engelbertstr~41}
-\setkomavar{fromphone}{0221/95\,XX\,XX}
-\setkomavar{backaddress}{BikeSyndikat, Engelbertstr.~41, 50670 K\"oln}
-\setkomavar{place}{K\"oln} \setkomavar{signature}{ }
+\setkomavar{fromphone}{0221/951\,82\,60}
+\setkomavar{backaddress}{BikeSyndikat, Engelbertstr.~41, 50674~K\"oln}
+\setkomavar{place}{K\"oln}
+\setkomavar{signature}{ }
 \setkomavar{frombank}{Konto DE00\,111\,11\,111\,000\,00\,000, 
                       Bank K\"oln}
-%\setkomavar{location}{heir}
+\newkomavar{billingperiod}
+\setkomavar{billingperiod}{im Monat Marz 2016}
+%\setkomavar{location}{K\"oln, \today{}}
 
 %\newcounter{nextpage}
 %% \setkomavar{firsthead}{\newlength{\adrbreite}\newlength{\linbreite}\ignorespaces
@@ -55,15 +59,34 @@
 \setkomavar{firstfoot}{\parbox[b]{\linewidth}{\centering\def\\{,
     }\usekomavar{frombank}}}
 
-%\pagestyle{headings}
+\pagestyle{headings}
 
 \begin{document}
 
-\begin{letter}{\ }
-  \opening{\ }
-  \setkomavar{title}{Rechnung Nr.~\jobname}
+\begin{letter}{\ }%FIXME Destination address here
 
-  Lorem ipsum.
+\setkomavar{title}{Rechnung Nr.~\jobname}
+
+\opening{}
+
+Aufgrund folgender Dienstleistungen \usekomavar{billingperiod} erlaube ich
+mir zu berechnen:
+
+\bigskip
+\begin{tabular}{rr@{}l}
+  Softwareentwicklung \textsf{Audovera} & 1&,--~\euro{}\\
+  \hline
+  19\%~MWSt & 0&,19~\euro{}\\
+ \hline\hline
+ \textbf{Gesamt} & \textbf{1}&\textbf{,19}~\euro{}\\
+ \hline\hline
+\end{tabular}
+\bigskip
+
+F\"ur eine Zahlungsanweisung an mein Konto \usekomavar{frombank} bei
+der Deutschen Bank K\"oln w\"are ich Ihnen dankbar.
+
+\closing{\ }
 
 \end{letter}
 \end{document}
