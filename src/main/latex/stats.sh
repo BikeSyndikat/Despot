@@ -115,8 +115,10 @@ done
 cat stats-2.tex >>stats-stats.tex
 pdflatex stats-stats
 # open stats-stats.pdf
-cp -p stats-stats.pdf /data_a/win/dispo
-chmod 644 /data_a/win/dispo/stats-stats.pdf
+
+# assume target is created and chmod 3773:
+cp stats-stats.pdf /home/bikesyndikat/inbox/
+chmod o-rwx /home/bikesyndikat/inbox/stats-stats.pdf
 
 # Local Variables:
 # compile-command: "./stats.sh"
