@@ -1,3 +1,8 @@
+\c $dbname
+set role ${dbname}_owner;
+set search_path to ${schema}
+BEGIN;
+
 CREATE INDEX istrasse
   ON "Rechnungskunden"
   USING btree
@@ -13,4 +18,4 @@ CREATE INDEX ikdnr
   USING btree
   ("Kd-Nr" COLLATE pg_catalog."default" );
 
-
+COMMIT;

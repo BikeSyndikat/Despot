@@ -1,7 +1,9 @@
 -- Update and fill up the rider table.
 -- New riders that have bookings are inserted with stats.
 -- Existing riders hav their stats updated.
-
+\c $dbname
+set role ${dbname}_owner;
+set search_path to ${schema}
 BEGIN;
 
 WITH rider_hitlist AS (

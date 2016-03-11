@@ -1,5 +1,9 @@
 -- Show new riders, that is ones with bookings that are not in the
 -- riders table.
+\c $dbname
+set role ${dbname}_owner;
+set search_path to ${schema}
+BEGIN;
 
 WITH rider_hitlist AS (
 
@@ -13,3 +17,5 @@ SELECT COALESCE("FahrerNr", -1) AS id, COUNT("Id") AS anzahltouren,
   FROM rider_hitlist LEFT OUTER JOIN rider
        ON (rider_hitlist.id=rider.rider_number)
   WHERE rider.rider_number IS NULL;
+
+COMMIT;

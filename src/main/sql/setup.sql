@@ -1,3 +1,8 @@
+\c $dbname
+set role ${dbname}_owner;
+set search_path to ${schema}
+BEGIN;
+
 DROP VIEW IF EXISTS workorder;
 CREATE OR REPLACE VIEW workorder AS
  SELECT "Auftragsannahme"."Id" AS id,
@@ -42,3 +47,5 @@ CREATE OR REPLACE VIEW customer AS
 
    FROM "Rechnungskunden"
   ORDER BY "Rechnungskunden"."Kuerzel" ASC;
+
+COMMIT;

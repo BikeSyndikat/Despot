@@ -1,3 +1,8 @@
+\c $dbname
+set role ${dbname}_owner;
+set search_path to ${schema}
+BEGIN;
+
 DROP TABLE IF EXISTS rider;
 
 CREATE TABLE rider
@@ -25,3 +30,5 @@ INSERT INTO rider
   FROM "Auftragsannahme"
   GROUP BY "FahrerNr"
   ORDER BY letztetour DESC;
+
+COMMIT;
