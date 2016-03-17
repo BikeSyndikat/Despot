@@ -25,30 +25,30 @@ USER=superne
 cat stats-1.tex >stats-stats.tex
 
 # make an up-to-date customerbydate table shortened to reflect
-# (appropriate!) 3.5 year data:
+# (appropriate!) 1.0 year data:
 OPTS='--echo-all'
 $PSQL -U ${USER} -p ${PORT} -h ${HOST} ${DB} ${OPTS} <<EOF
  DROP TABLE customerbyday CASCADE;
  CREATE TABLE customerbyday AS
   SELECT "Dat"::date, "Kuerzel", COALESCE(SUM("Preis"), 0) AS "Preis"
   FROM "Auftragsannahme" 
-  WHERE "Dat"::date >= now()::date - INTERVAL '3.5 year ${WINDOWWIDTHG} days'
+  WHERE "Dat"::date >= now()::date - INTERVAL '1 year ${WINDOWWIDTHG} days'
   GROUP BY "Dat", "Kuerzel";
  CREATE UNIQUE INDEX customerbyday_dat_kuerzel
   ON customerbyday ("Dat", "Kuerzel");
 EOF
 
 # create a file with a list of customers that actually created revenue
-# relevant for a 3.5 year list:
+# relevant for a 1 year list:
 OPTS='-F , -t -A -o r.csv'
 $PSQL -U ${USER} -p ${PORT} -h ${HOST} ${DB} ${OPTS} -c\
  'SELECT "Kuerzel" FROM customerbyday GROUP BY "Kuerzel"'
 
 # determine the overall min and max dates for all plots, that is: plot
-# exactly 3.5 year of data from today into the past:
+# exactly 1 year of data from today into the past:
 plotmindate=`OPTS="-F , -t -A"
     $PSQL -U ${USER} -p ${PORT} -h ${HOST} ${DB} ${OPTS} -c\
-     "SELECT CAST(now() - INTERVAL '3.5 year' AS date)"`
+     "SELECT CAST(now() - INTERVAL '1 year' AS date)"`
 plotmaxdate=`OPTS="-F , -t -A"
     $PSQL -U ${USER} -p ${PORT} -h ${HOST} ${DB} ${OPTS} -c\
      "SELECT CAST(now() - INTERVAL '1 day' AS date)"`
