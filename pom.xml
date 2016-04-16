@@ -87,7 +87,13 @@
             </plugin>-->
         </plugins>
     </build>
-
+    <distributionManagement>
+        <site>
+            <id>targetlocal</id>
+            <name>file local</name>
+            <url>file:///var/www/sites/${project.name}</url>
+        </site>
+    </distributionManagement>
     <repositories>
         <repository>
             <id>prime-repo</id>
